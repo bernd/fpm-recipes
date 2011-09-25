@@ -3,6 +3,7 @@ class Mutt < FPM::Cookery::Recipe
 
   name     'mutt'
   version  '1.5.20'
+  revision '1'
   homepage 'http://www.mutt.org'
   source   'ftp://ftp.mutt.org/mutt/devel/mutt-1.5.20.tar.gz'
 
@@ -10,6 +11,8 @@ class Mutt < FPM::Cookery::Recipe
   replaces  'mutt'
 
   exclude   'etc/mime.types*'
+
+  config_files '/etc/Muttrc'
 
   def build
     configure :prefix => prefix,
