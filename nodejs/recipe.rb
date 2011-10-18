@@ -7,6 +7,7 @@ class NodeJS < FPM::Cookery::Recipe
   version  '0.4.12'
   homepage 'http://nodejs.org/'
   source   "http://nodejs.org/dist/node-v#{version}.tar.gz"
+  sha256   'c01af05b933ad4d2ca39f63cac057f54f032a4d83cff8711e42650ccee24fce4'
 
   section 'interpreters'
 

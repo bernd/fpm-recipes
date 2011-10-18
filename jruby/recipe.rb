@@ -6,6 +6,7 @@ class JRuby < FPM::Cookery::Recipe
   revision 2
   homepage 'http://www.jruby.org/'
   source   "http://jruby.org.s3.amazonaws.com/downloads/#{version}/jruby-bin-#{version}.tar.gz"
+  md5      '0e96b6f4d1c6f12b5ac480cd7ab7da78'
   arch     'all'
 
   section  'interpreters'
