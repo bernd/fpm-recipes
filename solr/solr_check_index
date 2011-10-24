@@ -1,0 +1,2 @@
+#!/bin/sh
+java -cp /usr/share/lucene/lib/lucene-core-3.2.0.jar -ea:org.apache.lucene... org.apache.lucene.index.CheckIndex "$@"

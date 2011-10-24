@@ -1,0 +1,24 @@
+#!/bin/sh
+#/ Usage: solr <path/to/solr_home> [-Djetty.host=localhost] [-Djetty.port=8983] [-Djetty.logs=/var/log/solr] [-Xmx1024m]
+#/ Run the Solr enterprise search platform.
+set -e
+
+# show usage
+[ $# -eq 0 -o "$1" = "--help" ] && {
+    grep '^#/'< "$0" |
+    cut -c4-
+    exit 2
+}
+
+SOLR_HOME=$1
+shift
+
+JAVA_OPTS="
+  -Djetty.home=/usr/share/solr/jetty
+  -Djetty.logs=/var/log/solr/
+  -server
+  -Xms512m
+  -Xmx1024m
+"
+
+exec java $JAVA_OPTS -Dsolr.solr.home=$SOLR_HOME "$@" -jar /usr/share/solr/jetty/start.jar /usr/share/solr/jetty/etc/jetty.xml
