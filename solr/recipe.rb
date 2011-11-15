@@ -5,7 +5,7 @@ class Solr < FPM::Cookery::Recipe
 
   name     'solr'
   version  '3.4.0'
-  revision 1
+  revision 2
   homepage 'http://lucene.apache.org/solr/'
   source   "http://www.eng.lsu.edu/mirrors/apache/lucene/solr/#{version}/apache-solr-#{version}.tgz"
   md5      '949b145669a6c9517b2fef32b58f679e'
@@ -32,11 +32,13 @@ class Solr < FPM::Cookery::Recipe
       (solr_home/'jetty').install Dir['{start.jar,etc,lib,webapps}']
     end
 
-    lucene_home = share('lucene')
-    share('lucene/lib').install Dir['war/WEB-INF/lib/lucene-*.jar']
+    (solr_home/'example').install Dir['example/solr/*']
 
     bin.install Dir[workdir('solr*')]
 
     var('log/solr').mkpath
+
+    etc('default').install_p workdir('etc-defaults'), 'solr'
+    etc('init').install_p workdir('upstart.conf'), 'solr.conf'
   end
 end

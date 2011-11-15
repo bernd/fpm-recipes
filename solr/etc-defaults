@@ -1,0 +1,4 @@
+# Apache Solr settings
+SOLR_HOME="/var/lib/solr"
+SOLR_USER="nobody" # Make sure to change this!
+SOLR_LOGDIR="/var/log/solr"
