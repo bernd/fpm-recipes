@@ -5,7 +5,8 @@ class Solr < FPM::Cookery::Recipe
 
   name     'solr'
   version  '3.4.0'
-  revision 2
+  revision 3
+  arch     'all'
   homepage 'http://lucene.apache.org/solr/'
   source   "http://www.eng.lsu.edu/mirrors/apache/lucene/solr/#{version}/apache-solr-#{version}.tgz"
   md5      '949b145669a6c9517b2fef32b58f679e'
