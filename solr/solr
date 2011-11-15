@@ -15,11 +15,13 @@ if [ `id -u` -ne 0 ]; then
 	exit 1
 fi
 
-# Load SOLR_USER, SOLR_LOGDIR and SOLR_HOME from /etc/default/solr.
+# Load SOLR_USER, SOLR_LOGDIR, SOLR_HOST and SOLR_HOME from /etc/default/solr.
 [ -r /etc/default/solr ] && . /etc/default/solr
 
-SOLR_USER="${SOLR_USER:=nobody}"
-SOLR_LOGDIR="${SOLR_LOGDIR:=/var/log/solr}"
+SOLR_USER="${SOLR_USER:='nobody'}"
+SOLR_LOGDIR="${SOLR_LOGDIR:='/var/log/solr'}"
+SOLR_HOST="${SOLR_HOST:='localhost'}"
+SOLR_PORT="${SOLR_PORT:='8983'}"
 
 if [ -n "$1" ]; then
 	SOLR_HOME=$1
@@ -39,6 +41,8 @@ fi
 JAVA_OPTS="
   -Djetty.home=/usr/share/solr/jetty
   -Djetty.logs=/var/log/solr/
+  -Djetty.host=$SOLR_HOST
+  -Djetty.port=$SOLR_PORT
   -server
   -Xms512m
   -Xmx1024m
