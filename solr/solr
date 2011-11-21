@@ -33,8 +33,8 @@ if [ -z "$SOLR_HOME" ]; then
 	exit 1
 fi
 
-if [ ! -d "$SOLR_HOME/conf" ]; then
-	echo "$SOLR_HOME/conf is missing. Please bootstrap $SOLR_HOME. Abort."
+if [ ! -e "$SOLR_HOME/solr.xml" ]; then
+	echo "$SOLR_HOME/solr.xml is missing. Please bootstrap $SOLR_HOME. Abort."
 	exit 1
 fi
 
