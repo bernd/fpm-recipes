@@ -5,7 +5,7 @@ class Solr < FPM::Cookery::Recipe
 
   name     'solr'
   version  '3.4.0'
-  revision 5
+  revision 6
   arch     'all'
   homepage 'http://lucene.apache.org/solr/'
   source   "http://www.eng.lsu.edu/mirrors/apache/lucene/solr/#{version}/apache-solr-#{version}.tgz"
@@ -15,6 +15,8 @@ class Solr < FPM::Cookery::Recipe
 
   build_depends 'sun-java6-jdk'
   depends       'sun-java6-jre'
+
+  config_files '/etc/default/solr', '/etc/init/solr.conf'
 
   def build
     warfile = File.expand_path('example/webapps/solr.war')
