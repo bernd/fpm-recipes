@@ -4,10 +4,10 @@ class Redis < FPM::Cookery::Recipe
   description 'An advanced key-value store'
 
   name     'redis-server'
-  version  '2:2.4.2'
+  version  '2:2.4.3'
   revision 1
   homepage 'http://redis.io/'
-  source   'https://github.com/antirez/redis', :with => :git, :tag => '2.4.2'
+  source   'https://github.com/antirez/redis', :with => :git, :tag => '2.4.3'
 
   section      'database'
   conflicts    'redis-server'
