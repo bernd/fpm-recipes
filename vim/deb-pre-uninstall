@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+update-alternatives --remove  vi /usr/bin/vim73
+update-alternatives --remove  vim /usr/bin/vim73
+update-alternatives --remove  vimdiff /usr/bin/vim73diff
+update-alternatives --remove  view /usr/bin/view73
+update-alternatives --remove  rvim /usr/bin/rvim73
+update-alternatives --remove  rview /usr/bin/rview73
+update-alternatives --remove  ex /usr/bin/ex73
+
+exit 0
