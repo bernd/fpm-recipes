@@ -22,6 +22,7 @@ SOLR_USER="${SOLR_USER:='nobody'}"
 SOLR_LOGDIR="${SOLR_LOGDIR:='/var/log/solr'}"
 SOLR_HOST="${SOLR_HOST:='localhost'}"
 SOLR_PORT="${SOLR_PORT:='8983'}"
+SOLR_JAVA_OPTS="${SOLR_JAVA_OPTS:=''}"
 
 if [ -n "$1" ]; then
 	SOLR_HOME=$1
@@ -46,6 +47,7 @@ JAVA_OPTS="
   -server
   -Xms512m
   -Xmx1024m
+  $SOLR_JAVA_OPTS
 "
 
 mkdir -p $SOLR_LOGDIR && chown -R $SOLR_USER $SOLR_LOGDIR

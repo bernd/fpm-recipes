@@ -4,3 +4,4 @@ SOLR_USER="nobody" # Make sure to change this!
 SOLR_LOGDIR="/var/log/solr"
 SOLR_HOST="127.0.0.1"
 SOLR_PORT="8983"
+#SOLR_JAVA_OPTS="-Xms2048m -Xmx2048m"
