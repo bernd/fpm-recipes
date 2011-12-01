@@ -2,9 +2,9 @@ class Vim < FPM::Cookery::Recipe
   description 'Vi IMproved - enhanced vi editor'
 
   name     'vim73'
-  version  '7.3.353'
+  version  '7.3.363'
   source   'https://vim.googlecode.com/hg/', :as => 'vim.hg',:with => :hg,
-                                             :rev => 'v7-3-353'
+                                             :rev => 'v7-3-363'
   homepage 'http://www.vim.org/'
 
   platforms [:debian, :ubuntu] do
@@ -20,11 +20,13 @@ class Vim < FPM::Cookery::Recipe
               '--with-view-name=view73', '--enable-multibyte',
               'prefix' => prefix
 
-    make
+    # Set VIMDIR to avoid config problems with other versions in /usr/share/vim.
+    make 'VIMDIR' => '/vim73'
   end
 
   def install
-    make :install, 'DESTDIR' => destdir
+    # Set VIMDIR to avoid config problems with other versions in /usr/share/vim.
+    make :install, 'DESTDIR' => destdir, 'VIMDIR' => '/vim73'
 
     man1('xxd.1').rename man1('xxd73.1')
     bin('xxd').rename bin('xxd73')
