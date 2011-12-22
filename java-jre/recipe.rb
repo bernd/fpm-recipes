@@ -4,16 +4,17 @@ class Java7JRE < FPM::Cookery::Recipe
   description 'Oracle Java(TM) Runtime (JRE)'
 
   name     'oracle-java7-jre'
-  version  '7.1'
-  revision 1
+  version  '7.2'
+  revision 0
   homepage 'http://java.com/'
-  sha256   '76bfa6d7b80e077a399bf69fbc8e031ee8f4094be0b6d1e30e247e7341ae2d40'
 
   case RbConfig::CONFIG['arch']
   when /x86_64/
-    source   'http://oracleotn.rd.llnwd.net/otn-pub/java/jdk/7u1-b08/jre-7u1-linux-x64.tar.gz'
+    source   'http://download.oracle.com/otn-pub/java/jdk/7u2-b13/jre-7u2-linux-x64.tar.gz'
+    sha256   'f2ac504f54e5c0952c07ce4a7718d23c627d514cf1250c0749dcdb6a55f9d53a'
   else
-    source   'http://oracleotn.rd.llnwd.net/otn-pub/java/jdk/7u1-b08/jre-7u1-linux-i586.tar.gz'
+    source   'http://download.oracle.com/otn-pub/java/jdk/7u2-b13/jre-7u2-linux-i586.tar.gz'
+    sha256   '00018d12a74a8b65cfbeccbce78223ffad46aadfa13209beeae7d98bb6bc69c3'
   end
 
   section      'interpreters'
