@@ -2,14 +2,13 @@ class Icinga < FPM::Cookery::Recipe
   description 'enterprise grade open source monitoring system'
 
   name     'icinga'
-  version  '1.5.1'
+  version  '1.6.1'
   revision 0
   homepage 'http://icinga.org/'
   source   "http://downloads.sourceforge.net/project/icinga/icinga/#{version}/icinga-#{version}.tar.gz"
-  sha256   'b2cc23ab8b96e9409ce3e7ed4a0e1aabea7f9b4e9d521f5ed23a99ea1c9ec37b'
+  sha256   '80b980272dd45bcd14b79d98b1125d6aa4184c20644863f71d9f3e00fbced89b'
 
   section      'net'
-  #config_files '/etc/redis/redis.conf'
 
   build_depends 'libgd2-xpm-dev'
 
@@ -35,11 +34,11 @@ class Icinga < FPM::Cookery::Recipe
                    'COMMAND_OPTS' => '', 'INSTALL_OPTS_WEB' => '',
                    'HTMLDIR' => '/usr/share/icinga/htdocs',
                    'CGIDIR' => '/usr/lib/cgi-bin/icinga'
-#    %w(run lib/redis log/redis).each { |p| var(p).mkpath }
 
-#    bin.install Dir["src/redis-*"].select{ |f| f =~ /redis-[^\.]+$/ }
 
-#    etc('redis').install "redis.conf"
-#    etc('init.d').install_p(workdir('redis-server.init.d'), 'redis-server')
+    # Install the sample config files.
+    doc('icinga').mkpath
+    cp_r 'sample-config', doc('icinga')
+    rm Dir["#{doc('icinga/sample-config')}/**/*.in"]
   end
 end
