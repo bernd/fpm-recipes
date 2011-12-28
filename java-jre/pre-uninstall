@@ -3,7 +3,7 @@ set -e
 
 BIN_PATH="/usr/lib/jvm/java-7-oracle-7u1/bin"
 
-for bin in java javaws java_vm jcontrol keytool orbd pack200 policytool rmid \
+for bin in java javac javaws java_vm jcontrol keytool orbd pack200 policytool rmid \
 	     rmiregistry servertool tnameserv unpack200
 do
 	update-alternatives --remove $bin $BIN_PATH/$bin                            
