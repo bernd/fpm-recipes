@@ -2,9 +2,9 @@ class Vim < FPM::Cookery::Recipe
   description 'Vi IMproved - enhanced vi editor'
 
   name     'vim73'
-  version  '7.3.363'
+  version  '7.3.372'
   source   'https://vim.googlecode.com/hg/', :as => 'vim.hg',:with => :hg,
-                                             :rev => 'v7-3-363'
+                                             :rev => 'v7-3-372'
   homepage 'http://www.vim.org/'
 
   platforms [:debian, :ubuntu] do
