@@ -2,11 +2,11 @@ class Icinga < FPM::Cookery::Recipe
   description 'enterprise grade open source monitoring system'
 
   name     'icinga-web'
-  version  '1.5.2'
+  version  '1.6.1'
   revision 0
   homepage 'http://icinga.org/'
   source   "http://downloads.sourceforge.net/project/icinga/icinga-web/#{version}/icinga-web-#{version}.tar.gz"
-  sha256   '62ca20da6816e0124137b79ade140b6c4e6a59220429420e27e274621cb696ac'
+  sha256   '41c2d699355c6371447f551730e2dba80a0117f34f0608fa249e292904708ab4'
 
   section      'net'
   #config_files '/etc/redis/redis.conf'
