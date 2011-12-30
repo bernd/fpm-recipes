@@ -10,6 +10,8 @@ class Eedis < FPM::Cookery::Recipe
   section      'database'
   config_files '/etc/edis/edis.config'
 
+  build_depends 'rebar'
+
   def build
     make
   end
