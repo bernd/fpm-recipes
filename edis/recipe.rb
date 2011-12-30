@@ -1,4 +1,4 @@
-class Eedis < FPM::Cookery::Recipe
+class Edis < FPM::Cookery::Recipe
   description 'protocol-compatable Server replacement for Redis, written in Erlang'
 
   name     'edis'
