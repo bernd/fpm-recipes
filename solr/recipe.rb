@@ -8,7 +8,7 @@ class Solr < FPM::Cookery::Recipe
   revision 7
   arch     'all'
   homepage 'http://lucene.apache.org/solr/'
-  source   "http://www.eng.lsu.edu/mirrors/apache/lucene/solr/#{version}/apache-solr-#{version}.tgz"
+  source   "http://www.eu.apache.org/dist//lucene/solr/#{version}/apache-solr-#{version}.tgz"
   md5      '949b145669a6c9517b2fef32b58f679e'
 
   section 'database'
