@@ -2,10 +2,10 @@ class Nginx < FPM::Cookery::Recipe
   description 'a high performance web server and a reverse proxy server'
 
   name     'nginx'
-  version  '1.0.9'
+  version  '1.0.11'
   homepage 'http://nginx.org/'
   source   "http://nginx.org/download/nginx-#{version}.tar.gz"
-  sha256   'e834b6f202b786f3b985315c24dcbd67c619d563ea03329d75a9ac667e138fff'
+  sha256   '4a382de6b89ec7eae03bfc9f9716bca5567993d0ae90fbd5f75c1ea598f7d722'
 
   section 'httpd'
 
