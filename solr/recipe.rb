@@ -5,7 +5,7 @@ class Solr < FPM::Cookery::Recipe
 
   name     'solr'
   version  '3.4.0'
-  revision 7
+  revision 8
   arch     'all'
   homepage 'http://lucene.apache.org/solr/'
   source   "http://www.eu.apache.org/dist//lucene/solr/#{version}/apache-solr-#{version}.tgz"
@@ -36,6 +36,7 @@ class Solr < FPM::Cookery::Recipe
     end
 
     (solr_home/'example').install Dir['example/solr/*']
+    solr_home.install workdir('logging.properties')
 
     bin.install Dir[workdir('solr*')]
 

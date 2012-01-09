@@ -20,6 +20,7 @@ fi
 
 SOLR_USER="${SOLR_USER:='nobody'}"
 SOLR_LOGDIR="${SOLR_LOGDIR:='/var/log/solr'}"
+SOLR_LOG_PROPERTIES="${SOLR_LOG_PROPERTIES:='/usr/share/solr/logging.properties'}"
 SOLR_HOST="${SOLR_HOST:='localhost'}"
 SOLR_PORT="${SOLR_PORT:='8983'}"
 SOLR_JAVA_OPTS="${SOLR_JAVA_OPTS:=''}"
@@ -44,6 +45,7 @@ JAVA_OPTS="
   -Djetty.logs=/var/log/solr/
   -Djetty.host=$SOLR_HOST
   -Djetty.port=$SOLR_PORT
+  -Djava.util.logging.config.file=$SOLR_LOG_PROPERTIES
   -server
   -Xms512m
   -Xmx1024m
