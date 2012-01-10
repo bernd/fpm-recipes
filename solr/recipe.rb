@@ -4,12 +4,12 @@ class Solr < FPM::Cookery::Recipe
   description 'Enterprise search platform'
 
   name     'solr'
-  version  '3.4.0'
-  revision 8
+  version  '3.5.0'
+  revision 0
   arch     'all'
   homepage 'http://lucene.apache.org/solr/'
   source   "http://www.eu.apache.org/dist//lucene/solr/#{version}/apache-solr-#{version}.tgz"
-  md5      '949b145669a6c9517b2fef32b58f679e'
+  md5      'b7be2fc190b26377ced5ae6055ed43e2'
 
   section 'database'
 
