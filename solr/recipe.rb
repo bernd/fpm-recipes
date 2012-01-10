@@ -5,7 +5,7 @@ class Solr < FPM::Cookery::Recipe
 
   name     'solr'
   version  '3.5.0'
-  revision 0
+  revision 1
   arch     'all'
   homepage 'http://lucene.apache.org/solr/'
   source   "http://www.eu.apache.org/dist//lucene/solr/#{version}/apache-solr-#{version}.tgz"
@@ -13,8 +13,8 @@ class Solr < FPM::Cookery::Recipe
 
   section 'database'
 
-  build_depends 'sun-java6-jdk'
-  depends       'sun-java6-jre'
+  build_depends 'sun-java6-jdk | oracle-java7-jre'
+  depends       'sun-java6-jre | oracle-java7-jre'
 
   config_files '/etc/default/solr', '/etc/init/solr.conf'
 
