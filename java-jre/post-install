@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-BIN_PATH="/usr/lib/jvm/java-7-oracle-7u1/bin"
+BIN_PATH="/usr/lib/jvm/java-7-oracle-jre/bin"
 
 for bin in java javaws java_vm jcontrol keytool orbd pack200 policytool rmid \
 	     rmiregistry servertool tnameserv unpack200

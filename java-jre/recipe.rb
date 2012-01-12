@@ -5,7 +5,7 @@ class Java7JRE < FPM::Cookery::Recipe
 
   name     'oracle-java7-jre'
   version  '7.2'
-  revision 0
+  revision 1
   homepage 'http://java.com/'
 
   case RbConfig::CONFIG['arch']
@@ -25,7 +25,7 @@ class Java7JRE < FPM::Cookery::Recipe
   end
 
   def install
-    install_dir = prefix('lib/jvm/java-7-oracle-7u1')
+    install_dir = prefix('lib/jvm/java-7-oracle-jre')
     install_dir.mkpath
     cp_r Dir['*'], install_dir.to_s
   end
