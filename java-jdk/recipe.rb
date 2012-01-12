@@ -5,7 +5,7 @@ class Java7JDK < FPM::Cookery::Recipe
 
   name     'oracle-java7-jdk'
   version  '7.2'
-  revision 0
+  revision 1
   homepage 'http://java.com/'
 
   case RbConfig::CONFIG['arch']
