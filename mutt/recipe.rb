@@ -3,7 +3,7 @@ class Mutt < FPM::Cookery::Recipe
 
   name     'mutt'
   version  '1.5.20'
-  revision '1'
+  revision '2'
   homepage 'http://www.mutt.org'
   source   'ftp://ftp.mutt.org/mutt/devel/mutt-1.5.20.tar.gz'
   sha256   '9579fc079d74ff5c89223ff09df402ef4e508ba8ca925c49e74aa09c02a9a796'
@@ -14,6 +14,8 @@ class Mutt < FPM::Cookery::Recipe
   exclude   'etc/mime.types*'
 
   config_files '/etc/Muttrc'
+
+  depends 'tokyocabinet'
 
   def build
     configure :prefix => prefix,
