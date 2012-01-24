@@ -2,10 +2,10 @@ class Tmux < FPM::Cookery::Recipe
   description 'terminal multiplexer'
 
   name     'tmux'
-  version  '1.5'
+  version  '1.6'
   homepage 'http://tmux.sourceforge.net/'
-  source   'http://downloads.sourceforge.net/project/tmux/tmux/tmux-1.5/tmux-1.5.tar.gz'
-  sha1     'e26132f02f344f8d6d06ae87d11f6a7aad880f67'
+  source   "http://downloads.sourceforge.net/project/tmux/tmux/tmux-#{version}/tmux-#{version}.tar.gz"
+  sha1     '8756f6bcecb18102b87e5d6f5952ba2541f68ed3'
 
   conflicts 'tmux'
   replaces  'tmux'
