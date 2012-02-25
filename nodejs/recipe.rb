@@ -4,11 +4,11 @@ class NodeJS < FPM::Cookery::Recipe
   description 'Evented I/O for V8 JavaScript'
 
   name     'nodejs'
-  version  '0.6.9'
+  version  '0.6.11'
   revision 0
   homepage 'http://nodejs.org/'
   source   "http://nodejs.org/dist/v#{version}/node-v#{version}.tar.gz"
-  sha256   '484ab6b3da6195339544c16aff17f747aa85d1dd15d765d6724aa8a4ecda03ca'
+  sha256   '94bbdb2d62645fd2ad5b96e41cfec68abf004fd03fabaaf7d71c48b39013cbd1'
 
   section 'interpreters'
 
