@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    configure)
+	user="beanstalkd"
+	group="beanstalkd"
+	datadir="/var/lib/beanstalkd"
+
+	if ! getent group "$group" > /dev/null 2>&1 ; then
+	    addgroup --system "$group" --quiet
+	fi
+
+	if ! id "$user" > /dev/null 2>&1 ; then
+	    adduser --system --home "$datadir" --no-create-home \
+		--ingroup "$group" --disabled-password \
+		--shell /bin/false "$user"
+	fi
+
+	install -d -o "$user" -g "$group" -m 0755 "$datadir"
+    ;;
+esac
