@@ -3,10 +3,10 @@ class Ruby193 < FPM::Cookery::Recipe
 
   name 'ruby'
   version '1:1.9.3.125'
-  revision 0
+  revision 1
   homepage 'http://www.ruby-lang.org/'
   source 'http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p125.tar.bz2'
-  sha256 '088665a231f64bcd5c7528964524c6f2eb4ed98fc716a86861c93e202c203558'
+  sha256 'c67a59443052b5a9219eb4cee3892bdfbc6f250f0c8e214e02256a4cc7ef5526'
 
   section 'interpreters'
 
