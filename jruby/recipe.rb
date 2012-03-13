@@ -3,7 +3,7 @@ class JRuby < FPM::Cookery::Recipe
 
   name     'jruby'
   version  '1.6.7'
-  revision 0
+  revision 1
   homepage 'http://www.jruby.org/'
   source   "http://jruby.org.s3.amazonaws.com/downloads/#{version}/jruby-bin-#{version}.tar.gz"
   md5      'fd1b8d7389aa92da69ea6efb4782e40a'
@@ -11,7 +11,13 @@ class JRuby < FPM::Cookery::Recipe
 
   section  'interpreters'
 
-  depends  'openjdk-6-jre | java6-runtime | oracle-java7-jre | oracle-java7-jdk'
+  java = [
+    'openjdk-7-jdk', 'openjdk-7-jre', 'openjdk-7-jre-headless',
+    'openjdk-6-jdk', 'openjdk-6-jre', 'openjdk-6-jre-headless',
+    'java6-runtime', 'oracle-java7-jre', 'oracle-java7-jdk'
+  ]
+
+  depends java.join(' | ')
 
   def build
     rm Dir['bin/*.{bat,dll,exe}'], :verbose => true
