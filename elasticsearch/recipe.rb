@@ -3,7 +3,7 @@ class Elasticsearch < FPM::Cookery::Recipe
 
   name     'elasticsearch'
   version  '0.19.0'
-  revision 0
+  revision 1
   homepage 'http://www.elasticsearch.org/'
   source   "https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-#{version}.tar.gz"
   sha256   '4c805727c81018d7a19308f1a64b57084590c1d7f3ea8893a82abb17ca770dad'
@@ -47,6 +47,7 @@ class Elasticsearch < FPM::Cookery::Recipe
     etc('elasticsearch').install Dir['config/*']
     etc('init').install_p workdir('elasticsearch.upstart'), 'elasticsearch.conf'
     etc('default').install_p workdir('elasticsearch.default'), 'elasticsearch'
+    etc('security/limits.d').install_p workdir('elasticsearch.limits'), 'elasticsearch.conf'
     share('elasticsearch').install Dir['{bin/elasticsearch.in.sh,lib,plugins,*.*}']
     var('lib/elasticsearch').mkpath
     var('log/elasticsearch').mkpath
