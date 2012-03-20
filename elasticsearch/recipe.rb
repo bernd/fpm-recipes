@@ -2,11 +2,11 @@ class Elasticsearch < FPM::Cookery::Recipe
   description 'Open Source, Distributed, RESTful Search Engine'
 
   name     'elasticsearch'
-  version  '0.19.0'
-  revision 1
+  version  '0.19.1'
+  revision 0
   homepage 'http://www.elasticsearch.org/'
   source   "https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-#{version}.tar.gz"
-  sha256   '4c805727c81018d7a19308f1a64b57084590c1d7f3ea8893a82abb17ca770dad'
+  sha256   '099c234a22b50ee11633650789fc415cba67f11960cfe6080d49dcd8e2337352'
   arch     'all'
 
   java = [
@@ -17,7 +17,11 @@ class Elasticsearch < FPM::Cookery::Recipe
   depends java.join(' | ')
 
   section      'database'
-  config_files '/etc/elasticsearch/elasticsearch.yml'
+  config_files '/etc/elasticsearch/elasticsearch.yml',
+               '/etc/elasticsearch/logging.yml',
+               '/etc/security/limits.d/elasticsearch.conf',
+               '/etc/init/elasticsearch.conf',
+               '/etc/default/elasticsearch'
 
   post_install   'post-install'
   post_uninstall 'post-uninstall'
