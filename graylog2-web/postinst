@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+if [ -d /usr/share/graylog2-web ]; then
+    chown -Rf graylog2-web:graylog2-web /usr/share/graylog2-web
+fi
