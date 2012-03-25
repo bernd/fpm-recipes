@@ -1,0 +1,13 @@
+## FPM Cookery Notes
+
+This will build a package with qll the gems vendored in.  
+This requires that your workstation has rubygems and bundler installed. (system wide default location)  
+If your install of rubygems is not in the default system wide location you will need to adjust the following  
+before trying to build this package.  
+
+    def build
+        system '/var/lib/gems/1.8/bin/bundle install 1>/dev/null'
+        system '/var/lib/gems/1.8/bin/bundle package 1>/dev/null'
+        system '/var/lib/gems/1.8/bin/bundle --deployment 1>/dev/null'
+    end
+
