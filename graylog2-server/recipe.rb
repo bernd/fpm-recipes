@@ -1,4 +1,4 @@
-class Graylog2Web < FPM::Cookery::Recipe
+class Graylog2Server < FPM::Cookery::Recipe
     homepage    'http://graylog2.org'
     source      'https://github.com/downloads/Graylog2/graylog2-server/graylog2-server-0.9.6p1-RC1.tar.gz'
     md5         '25c5fb08fe9f0466444c558358e9e5e4'
