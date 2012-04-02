@@ -5,9 +5,10 @@ class Graylog2Server < FPM::Cookery::Recipe
 
     name        'graylog2-server'
     version     '0.9.6p1RC1'
-    revision    '1' 
-    #vendor      'aussielunix'
+    revision    '2' 
+    vendor      'aussielunix'
     description 'graylog2-server is the server part of an open source log management solution that stores your logs in elasticsearch.'
+    arch	'any'
     section     'admin'
 
     java = [
@@ -24,6 +25,9 @@ class Graylog2Server < FPM::Cookery::Recipe
             s.gsub! '../graylog2-server.jar', share('graylog2-server/graylog2-server.jar')
         end 
 
+        inline_replace 'graylog2.conf.example' do |s|
+		s.gsub! 'mongodb_useauth = true', 'mongodb_useauth = false'
+	end	
     end 
 
     def install
