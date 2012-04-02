@@ -8,7 +8,7 @@ class Graylog2Web < FPM::Cookery::Recipe
     revision    '5'
     vendor      'aussielunix'
     description 'graylog2-web is the web part of an open source log management solution that stores your logs in elasticsearch.'
-    arch	'any'
+    arch	'all'
     section     'admin'
 
     build_depends 'rubygems', 'bundler'

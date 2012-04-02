@@ -8,7 +8,7 @@ class Graylog2Server < FPM::Cookery::Recipe
     revision    '2' 
     vendor      'aussielunix'
     description 'graylog2-server is the server part of an open source log management solution that stores your logs in elasticsearch.'
-    arch	'any'
+    arch	'all'
     section     'admin'
 
     java = [
