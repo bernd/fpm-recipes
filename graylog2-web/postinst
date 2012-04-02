@@ -3,3 +3,7 @@
 if [ -d /usr/share/graylog2-web ]; then
     chown -Rf graylog2-web:graylog2-web /usr/share/graylog2-web
 fi
+
+
+exec su - graylog2-web -s /bin/sh -c '/var/lib/gems/1.8/bin/bundle check --path vendor/bundle 1>/dev/null'
+
