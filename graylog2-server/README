@@ -13,5 +13,6 @@ Both are in very active development.
 More information can be found at:
 
 web:    http://graylog2.org/
+docs:   [github wiki](https://github.com/Graylog2/graylog2-web-interface/wiki/Installing-Graylog2-0.9.6p1-on-Ubuntu-Lucid-using-DEBs)
 irc:    #graylog2 on Freenode
 github: https://github.com/Graylog2
