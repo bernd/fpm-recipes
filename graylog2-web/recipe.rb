@@ -5,9 +5,10 @@ class Graylog2Web < FPM::Cookery::Recipe
 
     name        'graylog2-web'
     version     '0.9.6p1RC1'
-    revision    '1'
-    vendor      'bulletproof'
+    revision    '5'
+    vendor      'aussielunix'
     description 'graylog2-web is the web part of an open source log management solution that stores your logs in elasticsearch.'
+    arch	'any'
     section     'admin'
 
     build_depends 'rubygems', 'bundler'
@@ -22,13 +23,19 @@ class Graylog2Web < FPM::Cookery::Recipe
     post_uninstall 'postrm'
 
     def build
-	system '/var/lib/gems/1.8/bin/bundle install 1>/dev/null'
-	system '/var/lib/gems/1.8/bin/bundle package 1>/dev/null'
-	system '/var/lib/gems/1.8/bin/bundle --deployment 1>/dev/null'
+        system '/var/lib/gems/1.8/bin/bundle install --path vendor/bundle  1>/dev/null'
+        system '/var/lib/gems/1.8/bin/bundle check --path vendor/bundle 1>/dev/null'
+        system "patch -u vendor/bundle/ruby/1.8/gems/graylog2-declarative_authorization-0.5.2/lib/declarative_authorization/reader.rb #{workdir}/declarative_authorization-patch.p0"
+        inline_replace 'config/mongoid.yml' do |s|
+		s.gsub! '<%= ENV[\'MONGOID_HOST\'] %>', 'localhost'
+		s.gsub! 'port: <%= ENV[\'MONGOID_PORT\'] %>', 'database: graylog2'
+		s.gsub! 'username: <%= ENV[\'MONGOID_USERNAME\'] %>', ''
+		s.gsub! 'password: <%= ENV[\'MONGOID_PASSWORD\'] %>', ''
+		s.gsub! 'database: <%= ENV[\'MONGOID_DATABASE\'] %>', ''
+	end	
     end
 
-    def install
-	
+    def install	
         share('graylog2-web').install workdir('COPYING')
         share('graylog2-web').install workdir('README')
         share('graylog2-web').install Dir['*']
