@@ -2,11 +2,11 @@ class Elasticsearch < FPM::Cookery::Recipe
   description 'Open Source, Distributed, RESTful Search Engine'
 
   name     'elasticsearch'
-  version  '0.19.2'
+  version  '0.19.3'
   revision 0
   homepage 'http://www.elasticsearch.org/'
   source   "https://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-#{version}.tar.gz"
-  sha256   'adac92d66ce91f42d9e67bd60e6b1335995f5dfdd153165fdcf1fe24b63ac59e'
+  sha256   '2a4b0aa6853e6abc1328bc7107f80cd4dcdd4ef15e88ca4d44cb0c5f8560014e'
   arch     'all'
 
   java = [
