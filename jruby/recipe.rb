@@ -2,11 +2,11 @@ class JRuby < FPM::Cookery::Recipe
   description 'Java implementation of the Ruby programming language'
 
   name     'jruby'
-  version  '1.6.7'
-  revision 1
+  version  '1.6.7.2'
+  revision 0
   homepage 'http://www.jruby.org/'
   source   "http://jruby.org.s3.amazonaws.com/downloads/#{version}/jruby-bin-#{version}.tar.gz"
-  md5      'fd1b8d7389aa92da69ea6efb4782e40a'
+  md5      '1e520f1b5130114464e5f1950cb24774'
   arch     'all'
 
   section  'interpreters'
