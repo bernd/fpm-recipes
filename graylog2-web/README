@@ -17,3 +17,5 @@ docs:   [github wiki](https://github.com/Graylog2/graylog2-web-interface/wiki/In
 irc:    #graylog2 on Freenode
 github: https://github.com/Graylog2
 
+# Notice
+When building this package on Ubuntu systems make sure to use the system ruby (1.8.7) as this recipe uses bundler to package the required gems, using other version with rvm will break the package on a vanila Ubuntu (which uses 1.8.7 as well).
