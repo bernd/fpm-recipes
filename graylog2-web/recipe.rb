@@ -23,8 +23,8 @@ class Graylog2Web < FPM::Cookery::Recipe
     post_uninstall 'postrm'
 
     def build
-        system '/var/lib/gems/1.8/bin/bundle install --path vendor/bundle  1>/dev/null'
-        system '/var/lib/gems/1.8/bin/bundle check --path vendor/bundle 1>/dev/null'
+        system 'bundle install --path vendor/bundle  1>/dev/null'
+        system 'bundle check --path vendor/bundle 1>/dev/null'
         inline_replace 'config/mongoid.yml' do |s|
 		s.gsub! '<%= ENV[\'MONGOID_HOST\'] %>', 'localhost'
 		s.gsub! 'port: <%= ENV[\'MONGOID_PORT\'] %>', 'database: graylog2'
