@@ -3,6 +3,7 @@ class Nginx < FPM::Cookery::Recipe
 
   name     'nginx'
   version  '1.3.0'
+  revision 1
   homepage 'http://nginx.org/'
   source   "http://nginx.org/download/nginx-#{version}.tar.gz"
   sha256   'e95d4e5f840afe0e85f95689a10ffa8acaf5a4a1372fe285b175fbc807a5f409'
@@ -39,7 +40,9 @@ class Nginx < FPM::Cookery::Recipe
       :error_log_path => '/var/log/nginx/error.log',
       :http_proxy_temp_path => '/var/lib/nginx/proxy',
       :http_fastcgi_temp_path => '/var/lib/nginx/fastcgi',
-      :http_client_body_temp_path => '/var/lib/nginx/body'
+      :http_client_body_temp_path => '/var/lib/nginx/body',
+      :http_uwsgi_temp_path => '/var/lib/nginx/uwsgi',
+      :http_scgi_temp_path => '/var/lib/nginx/scgi'
 
     make
   end
