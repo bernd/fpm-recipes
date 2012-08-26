@@ -27,6 +27,7 @@ class Graylog2Server < FPM::Cookery::Recipe
 
         inline_replace 'graylog2.conf.example' do |s|
 		s.gsub! 'mongodb_useauth = true', 'mongodb_useauth = false'
+		s.gsub! 'mongodb_host = localhost', 'mongodb_host = 127.0.0.1'
 	end	
     end 
 
