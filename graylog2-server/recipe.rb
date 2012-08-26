@@ -27,7 +27,7 @@ class Graylog2Server < FPM::Cookery::Recipe
 
   def install
     bin.install 'bin/graylog2ctl'
-    etc('init').install_p 'contrib/distro/ubuntu/graylog2-server.conf', 'graylog2-server.conf'
+    etc('init').install_p workdir('graylog2-server.upstart'), 'graylog2-server.conf'
     etc.install_p 'graylog2.conf.example', 'graylog2.conf'
     share('graylog2-server').install workdir('COPYING')
     share('graylog2-server').install workdir('README')
