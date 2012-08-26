@@ -7,6 +7,9 @@ class Graylog2Web < FPM::Cookery::Recipe
   version     '0.9.6p1'
   revision    '1'
   vendor      'aussielunix'
+  maintainer  'Mick Pollard <aussielunix@gmail.com>'
+  license     'GPL-3'
+
   description 'graylog2-web is the web part of an open source log management solution that stores your logs in elasticsearch.'
   arch	      'all'
   section     'admin'
