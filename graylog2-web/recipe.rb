@@ -13,11 +13,9 @@ class Graylog2Web < FPM::Cookery::Recipe
 
   build_depends 'rubygems', 'bundler'
 
-  #TODO: set proper deps here including ruby etc
   depends 'ruby1.8', 'libopenssl-ruby', 'ruby', 'rubygems', 'ruby-bundler'
 
 
-  #config_files '/etc/graylog2.conf'
   pre_install 'preinst'
   post_install 'postinst'
   post_uninstall 'postrm'
