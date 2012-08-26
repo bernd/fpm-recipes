@@ -14,7 +14,7 @@ class Graylog2Web < FPM::Cookery::Recipe
     build_depends 'rubygems', 'bundler'
 
     #TODO: set proper deps here including ruby etc
-    depends 'ruby1.8', 'libopenssl-ruby', 'ruby', 'rubygems'
+    depends 'ruby1.8', 'libopenssl-ruby', 'ruby', 'rubygems', 'ruby-bundler'
 
 
     #config_files '/etc/graylog2.conf'
@@ -23,9 +23,8 @@ class Graylog2Web < FPM::Cookery::Recipe
     post_uninstall 'postrm'
 
     def build
-        system '/var/lib/gems/1.8/bin/bundle install --path vendor/bundle  1>/dev/null'
-        system '/var/lib/gems/1.8/bin/bundle check --path vendor/bundle 1>/dev/null'
-        system "patch -u vendor/bundle/ruby/1.8/gems/graylog2-declarative_authorization-0.5.2/lib/declarative_authorization/reader.rb #{workdir}/declarative_authorization-patch.p0"
+        system 'bundle install --deployment  1>/dev/null'
+        system 'bundle check  1>/dev/null'
         inline_replace 'config/mongoid.yml' do |s|
 		s.gsub! '<%= ENV[\'MONGOID_HOST\'] %>', 'localhost'
 		s.gsub! 'port: <%= ENV[\'MONGOID_PORT\'] %>', 'database: graylog2'
@@ -39,5 +38,6 @@ class Graylog2Web < FPM::Cookery::Recipe
         share('graylog2-web').install workdir('COPYING')
         share('graylog2-web').install workdir('README')
         share('graylog2-web').install Dir['*']
+        share('graylog2-web').install Dir['.bundle']
     end
 end
