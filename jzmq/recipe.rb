@@ -1,7 +1,7 @@
 class Jzmq < FPM::Cookery::Recipe
   description 'Java bindings for jzmq'
 
-  name     'zeromq'
+  name     'jzmq'
   version  '1.0.0'
   homepage 'https://github.com/zeromq/jzmq'
   source   'git://github.com/zeromq/jzmq.git', :with => :git, :tag =>'HEAD'
