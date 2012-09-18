@@ -13,7 +13,7 @@ class Strom < FPM::Cookery::Recipe
     'openjdk-6-jdk', 'openjdk-6-jre', 'openjdk-6-jre-headless'
   ]
 
-  depends java.join(' | ')
+  depends java.join(' | ') , 'unzip'
 
   def build
     inline_replace 'storm-0.8.1/log4j/storm.log.properties' do |s|
