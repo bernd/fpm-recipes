@@ -1,0 +1,8 @@
+# /etc/default/storm-nimbus
+
+#_ START? _#
+ENABLE="no"
+
+#_ DRPC _#
+STORM_DRPC_JVM_MEMORY="768m"
+STORM_DRPC_JVM_OPTS="-Dlog4j.configuration=storm.log.properties"

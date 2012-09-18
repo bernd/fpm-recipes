@@ -1,0 +1,8 @@
+# /etc/default/storm-ui
+
+#_ START? _#
+ENABLE="no"
+
+#_ UI _#
+STORM_UI_JVM_MEMORY="768m"
+STORM_UI_JVM_OPTS="-Dlog4j.configuration=storm.log.properties"

@@ -1,0 +1,11 @@
+# /etc/default/storm
+
+JAVA_LIBRARY_PATH="/usr/local/lib:/opt/local/lib:/usr/lib"
+STORM_USER="root"
+STORM_PID="/var/run/storm-nimbus.pid"
+STORM_HOME="/opt/storm"
+STORM_LIB="$STORM_HOME/lib"
+STORM_JAR="$STORM_HOME/storm-*.jar"
+STORM_CONF="/etc/storm"
+STORM_CLASSPATH="$(echo $STORM_LIB/*.jar | tr ' ' ':'):$(echo $STORM_JAR | tr ' ' ':'):$(echo $STORM_CONF | tr ' ' ':')"
+STORM_OPTIONS=""
