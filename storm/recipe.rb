@@ -7,6 +7,7 @@ class Strom < FPM::Cookery::Recipe
   source   "https://github.com/downloads/nathanmarz/storm/storm-#{version}.zip"
   sha256   'fd086855e0a012076af08446e7cfcdcec58fc28f3fc0b196f4d748a3ac68bee4'
   arch     'all'
+  post_install 'post-install'
 
   java = [
     'openjdk-7-jdk', 'openjdk-7-jre', 'openjdk-7-jre-headless',
