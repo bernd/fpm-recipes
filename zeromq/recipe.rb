@@ -2,13 +2,13 @@ class ZeroMQ < FPM::Cookery::Recipe
   description 'The Intelligent Transport Layer'
 
   name     'zeromq'
-  version  '2.1.10'
+  version  '3.2.0.rc1'
   homepage 'http://www.zeromq.org'
-  source   'http://download.zeromq.org/zeromq-2.1.10.tar.gz'
-  sha256   'c6727ee334b572b25269c7fed24a926cde236b3655e22f21c057aad4df5a4b79'
+  source   'http://download.zeromq.org/zeromq-3.2.0-rc1.tar.gz'
+  sha256   '6418523f281f618b9da677b8b640c158049a4f7e6f9f391909101b242e4cc991'
 
-  conflicts 'libzmq0', 'zeromq-bin'
-  replaces  'libzmq0', 'zeromq-bin'
+  conflicts 'libzmq1'
+  replaces  'libzmq1'
 
   def build
     configure :prefix => prefix
