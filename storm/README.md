@@ -1,2 +1,2 @@
 # Credit
-upstart files taken from [storm-deb-packaging](https://github.com/phobos182/storm-deb-packaging)
+upstart files inspired by [storm-deb-packaging](https://github.com/phobos182/storm-deb-packaging)
