@@ -13,7 +13,7 @@ class Graylog2Server < FPM::Cookery::Recipe
   arch	      'all'
   section     'admin'
 
-  depends   'default-jre-headless'
+  depends     'java-runtime-headless'
 
   config_files '/etc/graylog2.conf'
 
