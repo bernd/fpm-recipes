@@ -1,9 +1,9 @@
 class Logstash < FPM::Cookery::Recipe
   homepage    'http://logstash.net/'
   name        'logstash'
-  version     '1.1.5'
+  version     '1.1.9'
   source      "https://logstash.objects.dreamhost.com/release/#{name}-#{version}-monolithic.jar"
-  md5         '8f9d5b94a771a451a7f361e6a306589e'
+  md5         '70addd3ccd37e796f473fe5647c31126'
 
   revision    '1'
   vendor      'aussielunix'
