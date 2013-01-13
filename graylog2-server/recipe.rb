@@ -1,9 +1,9 @@
 class Graylog2Server < FPM::Cookery::Recipe
   homepage    'http://graylog2.org'
   name        'graylog2-server'
-  version     '0.9.6p1'
-  source      "https://github.com/downloads/Graylog2/graylog2-server/#{name}-#{version}.tar.gz"
-  md5         '499ae16dcae71eeb7c3a30c75ea7a1a6'
+  version     '0.10.0-rc.2'
+  source      "https://s3-eu-west-1.amazonaws.com/graylog2-releases/#{name}/#{name}-#{version}.tar.gz"
+  md5         'ad56021aeb2c42ebd68874a559fd2ce0'
 
   revision    '1'
   vendor      'aussielunix'
