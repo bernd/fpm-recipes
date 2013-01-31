@@ -1,0 +1,12 @@
+input {
+  stdin {
+    type => "stdin-type"
+  }
+}
+
+output {
+  stdout {
+    debug => true
+    debug_format => "json"
+  }
+}
