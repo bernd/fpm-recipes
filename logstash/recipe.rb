@@ -6,8 +6,7 @@ class Logstash < FPM::Cookery::Recipe
   md5         '70addd3ccd37e796f473fe5647c31126'
 
   revision    '1'
-  vendor      'aussielunix'
-  maintainer  'Mick Pollard <aussielunix@gmail.com>'
+  maintainer  'Sébastien Masset <smt.masset@gmail.com>'
   license     'Apache 2'
   description 'logstash is a tool for managing events and logs. You can use it to collect logs, parse them, and store them for later use (like, for searching).'
   arch	      'all'
