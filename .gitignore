@@ -1,3 +1,5 @@
 cache/
 pkg/
 tmp-*/
+.buildpath
+.project
