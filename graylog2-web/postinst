@@ -5,5 +5,5 @@ if [ -d /usr/share/graylog2-web ]; then
 fi
 
 
-exec su - graylog2-web -s /bin/sh -c 'bundle check  1>/dev/null'
+exec su - graylog2-web -s /bin/sh -c 'bundle check --path vendor/bundle 1>/dev/null'
 
