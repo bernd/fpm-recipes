@@ -1,10 +1,10 @@
 class Graylog2Server < FPM::Cookery::Recipe
   homepage    'http://graylog2.org'
-  source      'https://github.com/downloads/Graylog2/graylog2-server/graylog2-server-0.9.6p1.tar.gz'
-  md5         '499ae16dcae71eeb7c3a30c75ea7a1a6'
-
   name        'graylog2-server'
-  version     '0.9.6p1'
+  version     '0.10.0-rc.4'
+  source      "https://s3-eu-west-1.amazonaws.com/graylog2-releases/#{name}/#{name}-#{version}.tar.gz"
+  md5         'd53ac6a291fa0e3cb77c6c37d866acdc'
+
   revision    '1'
   vendor      'aussielunix'
   maintainer  'Mick Pollard <aussielunix@gmail.com>'
@@ -13,13 +13,14 @@ class Graylog2Server < FPM::Cookery::Recipe
   arch	      'all'
   section     'admin'
 
-  depends = 'default-jre-headless'
+  depends     'java-runtime-headless'
 
   config_files '/etc/graylog2.conf'
 
   def build
     inreplace 'bin/graylog2ctl' do |s|
-      s.gsub! '../graylog2-server.jar', share('graylog2-server/graylog2-server.jar')
+      s.gsub! 'GRAYLOG2_SERVER_JAR=graylog2-server.jar', 'GRAYLOG2_SERVER_JAR=' + share('graylog2-server/graylog2-server.jar')
+      s.gsub! 'LOG_FILE=log/graylog2-server.log', 'LOG_FILE=' + var('log/graylog2-server.log')
     end
 
     inline_replace 'graylog2.conf.example' do |s|
