@@ -5,7 +5,7 @@ class Graylog2Server < FPM::Cookery::Recipe
   source      "http://download.graylog2.org/#{name}/#{name}-#{version}.tar.gz"
   md5         '7f02dc4ca30dd79289c95c42e248ea12'
 
-  revision    '1'
+  revision    '2'
   vendor      'aussielunix'
   maintainer  'Mick Pollard <aussielunix@gmail.com>'
   license     'GPL-3'

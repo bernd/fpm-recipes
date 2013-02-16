@@ -5,7 +5,7 @@ class Graylog2WebPre < FPM::Cookery::Recipe
   source      "http://download.graylog2.org/#{name}-interface/#{name}-interface-#{version}.tar.gz"
   md5         '5b54ae9279ce97ae7551937674b6cad8'
 
-  revision    '1'
+  revision    '2'
   vendor      'aussielunix'
   maintainer  'Mick Pollard <aussielunix@gmail.com>'
   license     'GPL-3'
