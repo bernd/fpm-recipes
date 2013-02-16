@@ -1,22 +1,20 @@
-class Graylog2Web < FPM::Cookery::Recipe
+class Graylog2WebPre < FPM::Cookery::Recipe
   homepage    'http://graylog2.org'
-  source      "http://download.graylog2.org/#{name}/#{name}-#{version}.tar.gz"
-  md5         'f7b49a5259781a5a585cf7ee406e35c6'
-
   name        'graylog2-web'
-  version     '0.9.6p1'
+  version     '0.10.1'
+  source      "http://download.graylog2.org/#{name}-interface/#{name}-interface-#{version}.tar.gz"
+  md5         '5b54ae9279ce97ae7551937674b6cad8'
+
   revision    '1'
   vendor      'aussielunix'
   maintainer  'Mick Pollard <aussielunix@gmail.com>'
   license     'GPL-3'
 
   description 'graylog2-web is the web part of an open source log management solution that stores your logs in elasticsearch.'
-  arch	      'all'
+  arch	      'amd64'
   section     'admin'
 
-  build_depends 'rubygems', 'bundler'
-
-  depends 'ruby1.8', 'libopenssl-ruby', 'ruby', 'rubygems', 'ruby-bundler'
+  depends 'ruby1.9.3'
 
 
   pre_install 'preinst'
@@ -24,8 +22,10 @@ class Graylog2Web < FPM::Cookery::Recipe
   post_uninstall 'postrm'
 
   def build
-    system 'bundle install --deployment  1>/dev/null'
-    system 'bundle check  1>/dev/null'
+    system 'bundle package'
+    system 'bundle install --path vendor/bundle 1>/dev/null'
+    system 'bundle check --path vendor/bundle 1>/dev/null'
+    system "patch -u vendor/bundle/ruby/1.9.1/gems/graylog2-declarative_authorization-0.5.2//lib/declarative_authorization/reader.rb #{workdir}/declarative_authorization-patch.p0"
     inline_replace 'config/mongoid.yml' do |s|
       s.gsub! '<%= ENV[\'MONGOID_HOST\'] %>', 'localhost'
       s.gsub! 'port: <%= ENV[\'MONGOID_PORT\'] %>', 'database: graylog2'
@@ -39,6 +39,7 @@ class Graylog2Web < FPM::Cookery::Recipe
     share('graylog2-web').install workdir('COPYING')
     share('graylog2-web').install workdir('README')
     share('graylog2-web').install Dir['*']
+    share('graylog2-web').install Dir['vendor']
     share('graylog2-web').install Dir['.bundle']
   end
 end
