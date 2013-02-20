@@ -1,11 +1,11 @@
 class Graylog2WebPre < FPM::Cookery::Recipe
   homepage    'http://graylog2.org'
   name        'graylog2-web'
-  version     '0.10.1'
+  version     '0.10.2'
   source      "http://download.graylog2.org/#{name}-interface/#{name}-interface-#{version}.tar.gz"
-  md5         '5b54ae9279ce97ae7551937674b6cad8'
+  md5         '88d8c532f38a322cea45055af13f0e3e'
 
-  revision    '2'
+  revision    '1'
   vendor      'aussielunix'
   maintainer  'Mick Pollard <aussielunix@gmail.com>'
   license     'GPL-3'
