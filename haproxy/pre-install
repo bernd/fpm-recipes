@@ -1,0 +1,1 @@
+%{_sbindir}/useradd -c "HAProxy User" -s /bin/false -r -d %{_localstatedir}/lib/haproxy haproxy 2>/dev/null || :
