@@ -6,4 +6,3 @@ fi
 
 
 exec su - graylog2-web -s /bin/sh -c '/usr/local/bin/bundle check --path vendor/bundle 1>/dev/null'
-

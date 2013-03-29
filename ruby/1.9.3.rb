@@ -2,18 +2,19 @@ class Ruby193 < FPM::Cookery::Recipe
   description 'The Ruby virtual machine'
 
   name 'ruby'
-  version '1:1.9.3.125'
-  revision 1
+  version '1:1.9.3.392'
+  revision 0
   homepage 'http://www.ruby-lang.org/'
-  source 'http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p125.tar.bz2'
-  sha256 'c67a59443052b5a9219eb4cee3892bdfbc6f250f0c8e214e02256a4cc7ef5526'
+  source 'http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p392.tar.bz2'
+  sha256 '5a7334dfdf62966879bf539b8a9f0b889df6f3b3824fb52a9303c3c3d3a58391'
 
   section 'interpreters'
 
-  build_depends 'autoconf', 'libreadline5-dev', 'bison', 'zlib1g-dev',
-                'libssl-dev', 'libyaml-dev'
+  build_depends 'autoconf', 'libreadline6-dev', 'bison', 'zlib1g-dev',
+                'libssl-dev', 'libyaml-dev', 'libncurses5-dev'
 
-  depends 'libreadline5', 'zlib1g', 'openssl', 'libyaml-0-2'
+  depends 'libffi6', 'libncurses5', 'libreadline6', 'libssl1.0.0', 'libtinfo5',
+          'libyaml-0-2', 'zlib1g'
 
   def build
     configure :prefix => prefix, 'disable-install-doc' => true

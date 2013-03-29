@@ -2,10 +2,11 @@ class Nginx < FPM::Cookery::Recipe
   description 'a high performance web server and a reverse proxy server'
 
   name     'nginx'
-  version  '1.0.11'
+  version  '1.3.0'
+  revision 1
   homepage 'http://nginx.org/'
   source   "http://nginx.org/download/nginx-#{version}.tar.gz"
-  sha256   '4a382de6b89ec7eae03bfc9f9716bca5567993d0ae90fbd5f75c1ea598f7d722'
+  sha256   'e95d4e5f840afe0e85f95689a10ffa8acaf5a4a1372fe285b175fbc807a5f409'
 
   section 'httpd'
 
@@ -39,7 +40,9 @@ class Nginx < FPM::Cookery::Recipe
       :error_log_path => '/var/log/nginx/error.log',
       :http_proxy_temp_path => '/var/lib/nginx/proxy',
       :http_fastcgi_temp_path => '/var/lib/nginx/fastcgi',
-      :http_client_body_temp_path => '/var/lib/nginx/body'
+      :http_client_body_temp_path => '/var/lib/nginx/body',
+      :http_uwsgi_temp_path => '/var/lib/nginx/uwsgi',
+      :http_scgi_temp_path => '/var/lib/nginx/scgi'
 
     make
   end

@@ -1,0 +1,66 @@
+#!/bin/sh
+# postinst script for logstash
+#
+# see: dh_installdeb(1)
+
+set -e
+
+# summary of how this script can be called:
+#        * <postinst> `configure' <most-recently-configured-version>
+#        * <old-postinst> `abort-upgrade' <new version>
+#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>
+#          <new-version>
+#        * <postinst> `abort-remove'
+#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'
+#          <failed-install-package> <version> `removing'
+#          <conflicting-package> <version>
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+
+case "${1}" in
+    configure)
+    [ -f /etc/default/logstash ] && . /etc/default/logstash
+
+    [ -z "${LOGSTASH_USER}" ] && LOGSTASH_USER="logstash"
+    [ -z "${LOGSTASH_GROUP}" ] && LOGSTASH_GROUP="logstash"
+    if ! getent group "${LOGSTASH_GROUP}" > /dev/null 2>&1 ; then
+        addgroup --system "${LOGSTASH_GROUP}" --quiet
+    fi
+    if ! id ${LOGSTASH_USER} > /dev/null 2>&1 ; then
+        adduser --system --home /usr/share/logstash --no-create-home \
+        --ingroup "${LOGSTASH_GROUP}" --disabled-password --shell /bin/false \
+        "${LOGSTASH_USER}"
+    fi
+
+    # Set user permissions on /var/log/logstash
+    [ -z "${LOG_DIR}" ] && LOG_DIR="/var/log/logstash"
+    mkdir -p "${LOG_DIR}"
+    chown -R "${LOGSTASH_USER}:${LOGSTASH_GROUP}" "${LOG_DIR}"
+    chmod 755 "${LOG_DIR}"
+
+    # configuration files should not be modifiable by logstash user, as this can be a security issue
+    [ -z "${CONF_DIR}" ] && CONF_DIR="/etc/logstash"
+    chown -Rh 'root:root' "${CONF_DIR}"
+    chmod 755 "${CONF_DIR}"/*
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "${0} called with unknown argument \`${1}'" >&2
+        exit 1
+    ;;
+esac
+
+if [ -x "/etc/init.d/logstash" ]; then
+    update-rc.d logstash defaults 95 10 >/dev/null
+    if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+        invoke-rc.d logstash start || true
+    else
+        /etc/init.d/logstash start || true
+    fi
+fi
+
+exit 0

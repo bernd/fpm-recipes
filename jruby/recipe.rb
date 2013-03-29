@@ -2,11 +2,11 @@ class JRuby < FPM::Cookery::Recipe
   description 'Java implementation of the Ruby programming language'
 
   name     'jruby'
-  version  '1.6.7.2'
+  version  '1.7.0'
   revision 0
   homepage 'http://www.jruby.org/'
   source   "http://jruby.org.s3.amazonaws.com/downloads/#{version}/jruby-bin-#{version}.tar.gz"
-  md5      '1e520f1b5130114464e5f1950cb24774'
+  md5      '21861e0ecdbf48cda713c8ade82fdddb'
   arch     'all'
 
   section  'interpreters'
@@ -14,7 +14,7 @@ class JRuby < FPM::Cookery::Recipe
   java = [
     'openjdk-7-jdk', 'openjdk-7-jre', 'openjdk-7-jre-headless',
     'openjdk-6-jdk', 'openjdk-6-jre', 'openjdk-6-jre-headless',
-    'java6-runtime', 'oracle-java7-jre', 'oracle-java7-jdk'
+    'java6-runtime', 'oracle-java7-installer'
   ]
 
   depends java.join(' | ')

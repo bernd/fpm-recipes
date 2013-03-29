@@ -1,0 +1,13 @@
+KESTREL_STAGE="production"
+KESTREL_FD_LIMIT="32000"
+KESTREL_HEAP_OPTS="-Xmx1024m -Xms1024m -XX:NewSize=128m"
+KESTREL_GC_OPTS="-XX:+UseConcMarkSweepGC -XX:+UseParNewGC"
+KESTREL_GC_TRACE="-XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -XX:+PrintHeapAtGC"
+KESTREL_GC_LOG="-Xloggc:/var/log/kestrel/gc.log"
+KESTREL_DEBUG_OPTS="-XX:ErrorFile=/var/log/kestrel/java_error%p.log"
+
+KESTREL_JAVA_OPTS="-server -Dstage=$KESTREL_STAGE $KESTREL_GC_OPTS $KESTREL_GC_TRACE"
+KESTREL_JAVA_OPTS="$KESTREL_JAVA_OPTS $KESTREL_GC_LOG $KESTREL_HEAP_OPTS"
+KESTREL_JAVA_OPTS="$KESTREL_JAVA_OPTS $KESTREL_DEBUG_OPTS"
+
+export KESTREL_FD_LIMIT

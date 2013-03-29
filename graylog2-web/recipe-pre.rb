@@ -1,9 +1,9 @@
 class Graylog2WebPre < FPM::Cookery::Recipe
   homepage    'http://graylog2.org'
   name        'graylog2-web'
-  version     '0.10.2'
+  version     '0.10.0-rc.3'
   source      "http://download.graylog2.org/#{name}-interface/#{name}-interface-#{version}.tar.gz"
-  md5         '88d8c532f38a322cea45055af13f0e3e'
+  md5         'b216b301cfebf6e3704c9f04109a3bd2'
 
   revision    '1'
   vendor      'aussielunix'
@@ -25,7 +25,6 @@ class Graylog2WebPre < FPM::Cookery::Recipe
     system 'bundle package'
     system 'bundle install --path vendor/bundle 1>/dev/null'
     system 'bundle check --path vendor/bundle 1>/dev/null'
-    system "patch -u vendor/bundle/ruby/1.9.1/gems/graylog2-declarative_authorization-0.5.2//lib/declarative_authorization/reader.rb #{workdir}/declarative_authorization-patch.p0"
     inline_replace 'config/mongoid.yml' do |s|
       s.gsub! '<%= ENV[\'MONGOID_HOST\'] %>', 'localhost'
       s.gsub! 'port: <%= ENV[\'MONGOID_PORT\'] %>', 'database: graylog2'
