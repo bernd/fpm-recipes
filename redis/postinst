@@ -1,0 +1,56 @@
+#!/bin/sh
+# postinst script for redis
+#
+# see: dh_installdeb(1)
+
+set -e
+
+# summary of how this script can be called:
+#        * <postinst> `configure' <most-recently-configured-version>
+#        * <old-postinst> `abort-upgrade' <new version>
+#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>
+#          <new-version>
+#        * <postinst> `abort-remove'
+#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'
+#          <failed-install-package> <version> `removing'
+#          <conflicting-package> <version>
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+
+case "${1}" in
+    configure)
+    [ -f /etc/default/redis ] && . /etc/default/redis
+    [ -z "${REDIS_USER}" ] && REDIS_USER="redis"
+    [ -z "${REDIS_GROUP}" ] && REDIS_GROUP="redis"
+    if ! getent group "${REDIS_GROUP}" > /dev/null 2>&1 ; then
+        addgroup --system "${REDIS_GROUP}" --quiet
+    fi
+    if ! id ${REDIS_USER} > /dev/null 2>&1 ; then
+        adduser --system --home /var/lib/redis --no-create-home \
+        --ingroup "${REDIS_GROUP}" --disabled-password --shell /bin/false \
+        "${REDIS_USER}"
+    fi
+
+    # Set user permissions on /var/log/redis/redis-server.log
+    [ -z "${LOG_DIR}" ] && LOG_DIR="/var/log/redis"
+    mkdir -p "${LOG_DIR}"
+    chown -R "${REDIS_USER}:${REDIS_GROUP}" "${LOG_DIR}"
+    chmod 755 "${LOG_DIR}"
+
+    # configuration files should not be modifiable by redis user, as this can be a security issue
+    [ -z "${CONF_DIR}" ] && CONF_DIR="/etc/redis"
+    chown -Rh 'root:root' "${CONF_DIR}"
+    chmod 755 "${CONF_DIR}"/*
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "${0} called with unknown argument \`${1}'" >&2
+        exit 1
+    ;;
+esac
+
+exit 0

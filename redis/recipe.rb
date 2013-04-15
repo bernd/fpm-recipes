@@ -14,6 +14,8 @@ class Redis < FPM::Cookery::Recipe
   conflicts    'redis-server'
   config_files '/etc/redis/redis.conf'
 
+  post_install   'postinst'
+
   def build
     make
 
