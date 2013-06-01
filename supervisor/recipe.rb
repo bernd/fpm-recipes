@@ -12,7 +12,7 @@ class Supervisor < FPM::Cookery::Recipe
   depends        'python (>= 2.6)', 'python-medusa (>= 0.5.4)', 'python-meld3', 'python-pkg-resources (>= 0.6c7)', 'python-support (>= 0.90.0)'
   build_depends  'python-setuptools'
 
-  config_files '/etc/supervisor/supervisor.conf',
+  config_files '/etc/supervisor/supervisord.conf',
                '/etc/init/supervisor.conf',
                '/etc/default/supervisor'
 
