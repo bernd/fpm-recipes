@@ -24,8 +24,6 @@ class Graylog2WebPre < FPM::Cookery::Recipe
   post_uninstall 'postrm'
 
   def build
-    system 'bundle install --path vendor/bundle 1>/dev/null'
-    system 'bundle check --path vendor/bundle 1>/dev/null'
     system 'bundle package'
     inline_replace 'config/mongoid.yml' do |s|
       s.gsub! '<%= ENV[\'MONGOID_HOST\'] %>', 'localhost'
