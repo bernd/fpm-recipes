@@ -9,6 +9,6 @@ expect fork
 
 script
   cd /usr/share/graylog2-server
-  exec java -jar graylog2-server.jar &
+  exec java -jar graylog2-server.jar -f /etc/graylog2/graylog2.conf &
   emit graylog2-server_running
 end script

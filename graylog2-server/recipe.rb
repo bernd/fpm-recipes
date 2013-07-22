@@ -17,7 +17,7 @@ class Graylog2Server < FPM::Cookery::Recipe
 
   depends     'java-runtime-headless', 'mongodb | mongodb-10gen', 'elasticsearch'
 
-  config_files '/etc/graylog2.conf elasticsearch.yml.example'
+  config_files '/etc/graylog2/graylog2.conf elasticsearch.yml.example'
 
   def build
     inline_replace 'bin/graylog2ctl' do |s|
@@ -28,6 +28,7 @@ class Graylog2Server < FPM::Cookery::Recipe
     inline_replace 'graylog2.conf.example' do |s|
       s.gsub! 'mongodb_useauth = true', 'mongodb_useauth = false'
       s.gsub! 'mongodb_host = localhost', 'mongodb_host = 127.0.0.1'
+      s.gsub! 'elasticsearch_config_file = /etc/graylog2-elasticsearch.yml', 'elasticsearch_config_file = /etc/graylog2/elasticsearch.yml'
     end
   end
 
@@ -42,8 +43,8 @@ class Graylog2Server < FPM::Cookery::Recipe
       etc('default').install_p workdir('graylog2-server.confd'), 'graylog2-server'
     end
 
-    etc.install_p 'graylog2.conf.example', 'graylog2.conf'
-    etc.install_p 'elasticsearch.yml.example', 'graylog2-elasticsearch.yml'
+    etc('graylog2').install_p 'graylog2.conf.example', 'graylog2.conf'
+    etc('graylog2').install_p 'elasticsearch.yml.example', 'elasticsearch.yml'
 
     share('graylog2-server').install workdir('COPYING')
     share('graylog2-server').install workdir('README')
