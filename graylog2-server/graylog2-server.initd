@@ -22,10 +22,10 @@ USER=graylog2
 GROUP=graylog2
 NAME=graylog2-server
 DESC="Graylog2 Server"
+PID_FILE=/var/run/graylog2.pid
 DEFAULT=/etc/default/$NAME
 
-DIR=/usr/share/java
-PID_FILE=/var/tmp/graylog2.pid
+JAR=/usr/share/$NAME/graylog2-server.jar
 JAVA_OPTS="-Xms512m -Xmx512m -Xss1024k -XX:MaxPermSize=1g"
 GRAYLOG2_OPTS="-f /etc/graylog2/graylog2.conf -p $PID_FILE"
 
@@ -66,7 +66,9 @@ case "$1" in
         exit 1
     fi
 
-    if start-stop-daemon -S -q -b -o --user $USER -c $USER --exec $JAVA_HOME/bin/java -- $JAVA_OPTS -jar $DIR/${NAME}.jar $GRAYLOG2_OPTS; then
+    touch "$PID_FILE" && chown $USER:$GROUP "$PID_FILE"
+
+    if start-stop-daemon -S -q -b -o --user $USER -c $USER --exec $JAVA_HOME/bin/java -- $JAVA_OPTS -jar $JAR $GRAYLOG2_OPTS; then
         log_end_msg 0
     else
         log_end_msg 1
