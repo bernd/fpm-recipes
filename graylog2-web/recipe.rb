@@ -1,9 +1,12 @@
 class Graylog2WebPre < FPM::Cookery::Recipe
   homepage    'http://graylog2.org'
   name        'graylog2-web'
-  version     '0.10.2'
+  version     '0.12.0'
   source      "http://download.graylog2.org/#{name}-interface/#{name}-interface-#{version}.tar.gz"
-  md5         '88d8c532f38a322cea45055af13f0e3e'
+  source      "https://github.com/Graylog2/#{name}-interface/releases/download/#{version}/#{name}-interface-#{version}.tar.gz"
+  md5         'a35a6501d63c6c5991b57935c322324e'
+  sha1        '8aab53f057a0e7e1950ecc7336471ecfe732a86c'
+  sha256      '30506de5e5d6564a96838fd88df6ce82a54aa481229af0a56ea3a11ffbb20598'
 
   revision    '1'
   vendor      'aussielunix'
@@ -15,7 +18,6 @@ class Graylog2WebPre < FPM::Cookery::Recipe
   section     'admin'
 
   depends 'ruby1.9.3'
-
 
   pre_install 'preinst'
   post_install 'postinst'
