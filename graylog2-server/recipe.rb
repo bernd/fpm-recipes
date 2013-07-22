@@ -33,11 +33,18 @@ class Graylog2Server < FPM::Cookery::Recipe
 
   def install
     bin.install 'bin/graylog2ctl'
-    etc('init').install_p workdir('graylog2-server.upstart'), 'graylog2-server.conf'
-    etc('init.d').install_p workdir('graylog2-server.initd'), 'graylog2-server'
-    etc('default').install_p workdir('graylog2-server.confd'), 'graylog2-server'
+
+    case FPM::Cookery::Facts.platform
+    when :ubuntu
+      etc('init').install_p workdir('graylog2-server.upstart'), 'graylog2-server.conf'
+    when :debian
+      etc('init.d').install_p workdir('graylog2-server.initd'), 'graylog2-server'
+      etc('default').install_p workdir('graylog2-server.confd'), 'graylog2-server'
+    end
+
     etc.install_p 'graylog2.conf.example', 'graylog2.conf'
     etc.install_p 'elasticsearch.yml.example', 'graylog2-elasticsearch.yml'
+
     share('graylog2-server').install workdir('COPYING')
     share('graylog2-server').install workdir('README')
     share('graylog2-server').install 'build_date'
