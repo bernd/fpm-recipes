@@ -1,0 +1,5 @@
+#!/bin/sh -e
+if [ "$1" = remove ]; then
+  userdel -r graylog2
+fi
+

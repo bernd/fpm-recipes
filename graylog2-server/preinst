@@ -1,0 +1,4 @@
+#!/bin/sh -e
+if [ "$1" = install ]; then
+  useradd --system --shell=/bin/bash --home=/usr/share/graylog2-server graylog2
+fi
