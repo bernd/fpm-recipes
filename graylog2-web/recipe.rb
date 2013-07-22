@@ -24,10 +24,9 @@ class Graylog2WebPre < FPM::Cookery::Recipe
   post_uninstall 'postrm'
 
   def build
-    system 'bundle package'
     system 'bundle install --path vendor/bundle 1>/dev/null'
     system 'bundle check --path vendor/bundle 1>/dev/null'
-    system "patch -u vendor/bundle/ruby/1.9.1/gems/graylog2-declarative_authorization-0.5.2//lib/declarative_authorization/reader.rb #{workdir}/declarative_authorization-patch.p0"
+    system 'bundle package'
     inline_replace 'config/mongoid.yml' do |s|
       s.gsub! '<%= ENV[\'MONGOID_HOST\'] %>', 'localhost'
       s.gsub! 'port: <%= ENV[\'MONGOID_PORT\'] %>', 'database: graylog2'
