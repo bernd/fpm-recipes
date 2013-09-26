@@ -1,0 +1,25 @@
+description     "Kafka Zookeeper"
+
+start on (net-device-up and local-filesystems and runlevel [2345])
+stop on runlevel [016]
+
+respawn
+respawn limit 10 5
+
+console log
+limit nofile 32000 32000
+setuid kafka
+setgid kafka
+
+pre-start script
+  if [ -f /etc/default/kafka ]; then
+    . /etc/default/kafka
+  fi
+
+  if [ "$KAFKA_START_ZOOKEEPER" != "yes" ]; then
+    echo "kafka-zookeeper disabled in /etc/default/kafka" | logger -t kafka-zookeeper
+    exit 1
+  fi
+end script
+
+exec /usr/bin/kafka-zookeeper

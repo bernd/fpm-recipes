@@ -1,0 +1,30 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    configure)
+	user="kafka"
+	group="kafka"
+	varlib="/var/lib/kafka"
+	datadir="$varlib/logs"
+	metricsdir="$varlib/metrics"
+	zkdir="$varlib/zookeeper"
+	logdir="/var/log/kafka"
+
+	if ! getent group "$group" > /dev/null 2>&1 ; then
+	    addgroup --system "$group" --quiet
+	fi
+
+	if ! id "$user" > /dev/null 2>&1 ; then
+	    adduser --system --home "$datadir" --no-create-home \
+		--ingroup "$group" --disabled-password \
+		--shell /bin/false "$user"
+	fi
+
+	install -d -o "$user" -g "$group" -m 0755 "$varlib"
+	install -d -o "$user" -g "$group" -m 0755 "$datadir"
+	install -d -o "$user" -g "$group" -m 0755 "$metricsdir"
+	install -d -o "$user" -g "$group" -m 0755 "$zkdir"
+	install -d -o "$user" -g "$group" -m 0755 "$logdir"
+    ;;
+esac
