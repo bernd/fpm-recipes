@@ -7,15 +7,10 @@ respawn
 respawn limit 10 5
 
 console log
-chdir /usr/share/kestrel-%%VERSION%%
 
-script
-  if [ -f /etc/default/kestrel ]; then
-    . /etc/default/kestrel
-  fi
+limit nofile 65000 65000
 
-  ulimit -n $KESTREL_FD_LIMIT
-  ulimit -c unlimited
+setuid kestrel
+setgid kestrel
 
-  /usr/bin/java $KESTREL_JAVA_OPTS -jar kestrel-%%VERSION%%.jar
-end script
+exec /usr/bin/kestrel

@@ -1,8 +1,7 @@
 KESTREL_STAGE="production"
-KESTREL_FD_LIMIT="32000"
-KESTREL_HEAP_OPTS="-Xmx1024m -Xms1024m -XX:NewSize=128m"
-KESTREL_GC_OPTS="-XX:+UseConcMarkSweepGC -XX:+UseParNewGC"
-KESTREL_GC_TRACE="-XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -XX:+PrintHeapAtGC"
+KESTREL_HEAP_OPTS="-Xmx16G -XX:NewSize=2G"
+KESTREL_GC_OPTS="-XX:+UseParallelOldGC -XX:+UseAdaptiveSizePolicy -XX:MaxGCPauseMillis=1000 -XX:GCTimeRatio=99"
+KESTREL_GC_TRACE="-verbosegc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps"
 KESTREL_GC_LOG="-Xloggc:/var/log/kestrel/gc.log"
 KESTREL_DEBUG_OPTS="-XX:ErrorFile=/var/log/kestrel/java_error%p.log"
 

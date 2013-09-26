@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    configure)
+	user="kestrel"
+	group="kestrel"
+	spooldir="/var/spool/kestrel"
+	logdir="/var/log/kestrel"
+	targetdir="/etc/kestrel/target"
+
+	if ! getent group "$group" > /dev/null 2>&1 ; then
+	    addgroup --system "$group" --quiet
+	fi
+
+	if ! id "$user" > /dev/null 2>&1 ; then
+	    adduser --system --home "$spooldir" --no-create-home \
+		--ingroup "$group" --disabled-password \
+		--shell /bin/false "$user"
+	fi
+
+	install -d -o "$user" -g "$group" -m 0755 "$spooldir"
+	install -d -o "$user" -g "$group" -m 0755 "$logdir"
+	install -d -o "$user" -g "$group" -m 0755 "$targetdir"
+    ;;
+esac
