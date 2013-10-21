@@ -10,7 +10,16 @@ class ErlangR15 < FPM::Cookery::Recipe
   sha256   '5bc34fc34fc890f84bae7ff1f7c81fbec2c9aa28a0ef51a57d7a8192204d8aa2'
 
   section 'main'
-  build_depends 'libncurses5-dev', 'libssl-dev', 'libc6-dev-i386'
+  
+  case platform
+    when :centos, :redhat
+      then
+      build_depends 'ncurses-devel', 'glibc-devel', 'openssl-devel'
+    when :debian, :ubuntu
+      then
+      build_depends 'libncurses5-dev', 'libssl-dev', 'libc6-dev-i386'
+  end 
+  
   depends       'openssl'
 
   def build

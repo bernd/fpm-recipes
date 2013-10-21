@@ -1,16 +1,16 @@
 # Adapted from the formula in brew2deb.
 
-class ErlangR14 < FPM::Cookery::Recipe
+class ErlangR16 < FPM::Cookery::Recipe
   description 'Concurrent, real-time, distributed functional language'
 
-  name     'erlang-r14'
-  version  '1:14.b.4'
+  name     'erlang-r16'
+  version  '16.b.1'
   homepage 'http://www.erlang.org'
-  source   'http://www.erlang.org/download/otp_src_R14B04.tar.gz'
-  sha256   '099b35910e635b9148ac90f70fd9dd592920ed02406eb26c349efd8d1e959b6e'
+  source   'http://www.erlang.org/download/otp_src_R16B01.tar.gz'
+  sha256   'da388bc07b8ebdd008f5bb6c3d2c280e358bd188b5aac3ea01e3a7436315abc0'
 
   section 'main'
-  
+
   case platform
     when :centos, :redhat
       then
@@ -18,8 +18,8 @@ class ErlangR14 < FPM::Cookery::Recipe
     when :debian, :ubuntu
       then
       build_depends 'libncurses5-dev', 'libssl-dev', 'libc6-dev-i386'
-  end 
-  
+  end
+
   depends       'openssl'
 
   def build
@@ -27,9 +27,9 @@ class ErlangR14 < FPM::Cookery::Recipe
     #system "./otp_build autoconf" if File.exist? "otp_build"
 
     configure :enable_debug => true,
-            :prefix => prefix,
+            :prefix => "/mochi/opt",
             :enable_kernel_poll => true,
-            :enable_treads => true,
+            :enable_threads => true,
             :enable_dynamic_ssl_lib => true,
             :enable_smp_support => true
 
@@ -37,11 +37,11 @@ class ErlangR14 < FPM::Cookery::Recipe
       s.gsub! %r{^install\.bin:}, "install.bin:\ndisabled-install.bin:"
     end
 
-    make 'libdir_suffix' => '/erlang-r14'
+    make 'libdir_suffix' => '/erlang-r15'
   end
 
   def install
-    make :install, 'DESTDIR' => destdir, 'libdir_suffix' => '/erlang-r14'
+    make :install, 'DESTDIR' => destdir, 'libdir_suffix' => '/erlang-r15'
   end
 
   def test
