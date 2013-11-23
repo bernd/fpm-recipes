@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    configure)
+	user="statsd"
+	group="statsd"
+	home="/home/$user"
+
+	if ! getent group "$group" > /dev/null 2>&1 ; then
+	    addgroup --system "$group" --quiet
+	fi
+
+	if ! id "$user" > /dev/null 2>&1 ; then
+	    adduser --system --home "$home" --no-create-home \
+		--ingroup "$group" --disabled-password \
+		--shell /bin/false "$user"
+	fi
+    ;;
+esac
