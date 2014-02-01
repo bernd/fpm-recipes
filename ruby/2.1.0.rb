@@ -2,7 +2,7 @@ class Ruby210 < FPM::Cookery::Recipe
   description 'The Ruby virtual machine'
 
   name 'ruby'
-  version '2.1.0.0'
+  version '1:2.1.0.0'
   revision 0
   homepage 'http://www.ruby-lang.org/'
   source 'http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.0.tar.bz2'

@@ -2,7 +2,7 @@ class Ruby200 < FPM::Cookery::Recipe
   description 'The Ruby virtual machine'
 
   name 'ruby'
-  version '2.0.0.247'
+  version '1:2.0.0.247'
   revision 0
   homepage 'http://www.ruby-lang.org/'
   source 'http://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.bz2'
