@@ -1,9 +1,15 @@
 #!/bin/sh -e
+GRAYLOG2_HOME=/usr/share/graylog2-web
+GRAYLOG2_USER=graylog2-web
+GRAYLOG2_GROUP=graylog2-web
 
-if [ -d /usr/share/graylog2-web ]; then
-    chown -Rf graylog2-web:graylog2-web /usr/share/graylog2-web
+if [ -d "${GRAYLOG2_HOME}" ]; then
+    chown -Rf $GRAYLOG2_USER:$GRAYLOG2_GROUP "${GRAYLOG2_HOME}"
 fi
 
+su - $GRAYLOG2_USER -s /bin/sh -c 'bundle install --path vendor/bundle 1>/dev/null'
 
-exec su - graylog2-web -s /bin/sh -c 'bundle check --path vendor/bundle 1>/dev/null'
-
+# Generate secret token
+cd "${GRAYLOG2_HOME}"
+SECRET_TOKEN=`rake secret`
+sed -i -e "s/secret_token = 'CHANGE ME'/secret_token = '${SECRET_TOKEN}'/" config/initializers/secret_token.rb

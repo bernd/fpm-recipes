@@ -1,11 +1,12 @@
-# Command line arguments to pass to Java
-JAVA_ARGS=
+# Defaults for graylog2-server initscript
+# sourced by /etc/init.d/graylog2-server
+# installed at /etc/default/graylog2-server by the maintainer scripts
 
-# Configuration file of graylog2-server
-CONFIG_FILE="/etc/graylog2.conf"
+# Java dir
+DIR=/usr/share/java
 
-# Command line arguments to pass to graylog2-server
-GRAYLOG2_ARGS="-f ${CONFIG_FILE} --no-pid-file"
+# Pid file
+PID_FILE=/var/run/graylog2.pid
 
-# PID file location
-PIDFILE="/var/run/graylog2.pid"
+# Java options
+JAVA_OPTS="-Xms512m -Xmx512m -Xss1024k -XX:MaxPermSize=1g"
