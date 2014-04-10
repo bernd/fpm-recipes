@@ -34,12 +34,13 @@ class Openresty < FPM::Cookery::Recipe
       '--with-http_geoip_module',
       '--with-http_gzip_static_module',
       '--with-http_realip_module',
+      '--with-http_image_filter_module',
       '--with-http_sub_module',
       '--with-ipv6',
       '--with-sha1=/usr/include/openssl',
       '--with-md5=/usr/include/openssl',
       '--with-http_secure_link_module',
-      '--with-http_sub_module'
+      '--with-http_sub_module',
 
       :prefix => prefix,
 
@@ -72,6 +73,9 @@ class Openresty < FPM::Cookery::Recipe
 
     # server
     sbin.install Dir['objs/nginx']
+
+    # logrotate
+    (etc/'logrotate.d').install_p(workdir/'logrotate', 'nginx')
 
     # man page
     man8.install Dir['objs/nginx.8']
