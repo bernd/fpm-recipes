@@ -3,7 +3,7 @@ class Openresty < FPM::Cookery::Recipe
 
   name     'openresty'
   version  '1.5.11.1'
-  revision 2
+  revision 3
   homepage 'http://openresty.org/'
   source   "http://openresty.org/download/ngx_openresty-#{version}.tar.gz"
   sha256   '975f7a104a055d689a69655d69d9ee7ef9a4700d8927e5d324c440ea71a66a3b'
@@ -68,6 +68,9 @@ class Openresty < FPM::Cookery::Recipe
 
     # config files
     (etc/'nginx').install Dir['conf/*']
+
+    # final config file
+    (etc/'nginx').install_p(workdir/'nginx.conf', 'nginx.conf')
 
     # default site
     (var/'www/nginx-default').install Dir['html/*']
