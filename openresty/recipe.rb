@@ -17,9 +17,6 @@ class Openresty < FPM::Cookery::Recipe
   replaces  'nginx-full', 'nginx-common'
   conflicts 'nginx-full', 'nginx-common'
 
-  config_files '/etc/nginx/nginx.conf', '/etc/nginx/mime.types',
-               '/var/www/nginx-default/index.html'
-
   def build
     configure \
       '--sbin-path=/usr/sbin/nginx',
