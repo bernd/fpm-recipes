@@ -34,7 +34,6 @@ class Openresty < FPM::Cookery::Recipe
       '--with-http_geoip_module',
       '--with-http_gzip_static_module',
       '--with-http_realip_module',
-      '--with-http_image_filter_module',
       '--with-http_sub_module',
       '--with-ipv6',
       '--with-sha1=/usr/include/openssl',
