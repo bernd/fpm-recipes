@@ -10,8 +10,8 @@ class Openresty < FPM::Cookery::Recipe
 
   section 'httpd'
 
-  build_depends 'build-essential', 'libgeoip-dev', 'libpcre3-dev', 'zlib1g-dev', 'libssl-dev (<< 1.0.0)'
-  depends       'libpcre3', 'zlib1g', 'libssl0.9.8', 'libgeoip1'
+  build_depends 'build-essential', 'libgeoip-dev', 'libpcre3-dev', 'zlib1g-dev', 'libssl-dev (<< 1.0.0)', 'libgd2-noxpm-dev'
+  depends       'libpcre3', 'zlib1g', 'libssl0.9.8', 'libgeoip1', 'libgd2-noxpm'
 
   provides  'nginx-full', 'nginx-common'
   replaces  'nginx-full', 'nginx-common'
@@ -34,6 +34,7 @@ class Openresty < FPM::Cookery::Recipe
       '--with-http_geoip_module',
       '--with-http_gzip_static_module',
       '--with-http_realip_module',
+      '--with-http_image_filter_module',
       '--with-http_sub_module',
       '--with-ipv6',
       '--with-sha1=/usr/include/openssl',
