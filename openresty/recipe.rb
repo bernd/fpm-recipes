@@ -59,6 +59,8 @@ class Openresty < FPM::Cookery::Recipe
   end
 
   def install
+    make :install, 'DESTDIR' => destdir
+
     # startup script
     (etc/'init.d').install_p(workdir/'nginx.init.d', 'nginx')
 
