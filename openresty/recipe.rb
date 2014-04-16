@@ -3,7 +3,7 @@ class Openresty < FPM::Cookery::Recipe
 
   name     'openresty'
   version  '1.5.11.1'
-  revision 4
+  revision 5
   homepage 'http://openresty.org/'
   source   "http://openresty.org/download/ngx_openresty-#{version}.tar.gz"
   sha256   '975f7a104a055d689a69655d69d9ee7ef9a4700d8927e5d324c440ea71a66a3b'
@@ -42,6 +42,7 @@ class Openresty < FPM::Cookery::Recipe
       '--with-md5=/usr/include/openssl',
       '--with-http_secure_link_module',
       '--with-http_sub_module',
+      '--with-http_addition_module',
       "--add-module=#{builddir}/nginx_requestid",
 
       :prefix => prefix,
