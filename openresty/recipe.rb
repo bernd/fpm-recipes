@@ -3,14 +3,14 @@ class Openresty < FPM::Cookery::Recipe
 
   name     'openresty'
   version  '1.5.11.1'
-  revision 5
+  revision 6
   homepage 'http://openresty.org/'
   source   "http://openresty.org/download/ngx_openresty-#{version}.tar.gz"
   sha256   '975f7a104a055d689a69655d69d9ee7ef9a4700d8927e5d324c440ea71a66a3b'
 
   section 'httpd'
 
-  build_depends 'build-essential', 'git', 'libgeoip-dev', 'libpcre3-dev', 'zlib1g-dev', 'libssl-dev (<< 1.0.0)', 'libgd2-noxpm-dev'
+  build_depends 'build-essential', 'git', 'libgeoip-dev', 'libpcre3-dev', 'zlib1g-dev', 'libssl-dev (<< 1.0.0)', 'libgd2-noxpm-dev', 'libperl-dev'
   depends       'libpcre3', 'zlib1g', 'libssl0.9.8', 'libgeoip1', 'libgd2-noxpm'
 
   provides  'nginx-full', 'nginx-common'
@@ -20,13 +20,13 @@ class Openresty < FPM::Cookery::Recipe
   post_install 'postinst'
 
   def build
-    safesystem "git clone https://github.com/octohost/nginx_requestid.git #{builddir}/nginx_requestid"
     configure \
       '--sbin-path=/usr/sbin/nginx',
       '--with-http_stub_status_module',
       '--with-http_ssl_module',
       '--with-http_spdy_module',
       '--with-http_gzip_static_module',
+      '--with-http_perl_module',
       '--with-pcre',
       '--with-debug',
       '--with-luajit',
@@ -43,7 +43,6 @@ class Openresty < FPM::Cookery::Recipe
       '--with-http_secure_link_module',
       '--with-http_sub_module',
       '--with-http_addition_module',
-      "--add-module=#{builddir}/nginx_requestid",
 
       :prefix => prefix,
 
