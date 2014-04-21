@@ -3,7 +3,7 @@ class Openresty < FPM::Cookery::Recipe
 
   name     'openresty'
   version  '1.5.11.1'
-  revision 6
+  revision 7
   homepage 'http://openresty.org/'
   source   "http://openresty.org/download/ngx_openresty-#{version}.tar.gz"
   sha256   '975f7a104a055d689a69655d69d9ee7ef9a4700d8927e5d324c440ea71a66a3b'
@@ -20,6 +20,7 @@ class Openresty < FPM::Cookery::Recipe
   post_install 'postinst'
 
   def build
+    safesystem "git clone https://github.com/octohost/ngx_txid.git #{builddir}/ngx_txid"
     configure \
       '--sbin-path=/usr/sbin/nginx',
       '--with-http_stub_status_module',
@@ -43,6 +44,7 @@ class Openresty < FPM::Cookery::Recipe
       '--with-http_secure_link_module',
       '--with-http_sub_module',
       '--with-http_addition_module',
+      "--add-module=#{builddir}/ngx_txid",
 
       :prefix => prefix,
 
