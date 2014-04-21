@@ -7,11 +7,11 @@ class Haproxy < FPM::Cookery::Recipe
 
   name 'haproxy'
   version '1.5.dev22'
-  revision '1'
+  revision '2'
 
   description 'The Reliable, High Performance TCP/HTTP Load Balancer'
 
-  depends 'openssl', 'pcre', 'zlib'
+  depends 'openssl', 'pcre', 'zlib', 'logrotate', 'chkconfig', 'initscripts', 'shadow-utils', 'setup'
   build_depends 'openssl-devel', 'pcre-devel', 'zlib-devel'
 
   config_files '/etc/haproxy/haproxy.cfg'
