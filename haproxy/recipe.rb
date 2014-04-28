@@ -2,16 +2,16 @@ require 'fpm/package/python'
 
 class Haproxy < FPM::Cookery::Recipe
   homepage 'http://haproxy.1wt.eu/'
-  source 'http://haproxy.1wt.eu/download/1.5/src/devel/haproxy-1.5-dev18.tar.gz'
-  md5 '39c2cc3ccef059794377d557aef2fa43'
+  source 'http://haproxy.1wt.eu/download/1.5/src/devel/haproxy-1.5-dev22.tar.gz'
+  md5 '980332c79ab0ffa908c77fafdf61b8cc'
 
   name 'haproxy'
-  version '1.5.dev18'
-  revision '1'
+  version '1.5.dev22'
+  revision '2'
 
   description 'The Reliable, High Performance TCP/HTTP Load Balancer'
 
-  depends 'openssl', 'pcre', 'zlib'
+  depends 'openssl', 'pcre', 'zlib', 'logrotate', 'chkconfig', 'initscripts', 'shadow-utils', 'setup'
   build_depends 'openssl-devel', 'pcre-devel', 'zlib-devel'
 
   config_files '/etc/haproxy/haproxy.cfg'
