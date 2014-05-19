@@ -2,12 +2,12 @@ require 'fpm/package/python'
 
 class Haproxy < FPM::Cookery::Recipe
   homepage 'http://haproxy.1wt.eu/'
-  source 'http://haproxy.1wt.eu/download/1.5/src/devel/haproxy-1.5-dev22.tar.gz'
-  md5 '980332c79ab0ffa908c77fafdf61b8cc'
+  source 'http://haproxy.1wt.eu/download/1.5/src/devel/haproxy-1.5-dev25.tar.gz'
+  md5 'c4922e9666a90403c155c2584d5b4c39'
 
   name 'haproxy'
-  version '1.5.dev22'
-  revision '2'
+  version '1.5.dev25'
+  revision '1'
 
   description 'The Reliable, High Performance TCP/HTTP Load Balancer'
 
