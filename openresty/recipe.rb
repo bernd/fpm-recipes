@@ -3,7 +3,7 @@ class Openresty < FPM::Cookery::Recipe
 
   name     'openresty'
   version  '1.5.11.1'
-  revision 8
+  revision 9
   homepage 'http://openresty.org/'
   source   "http://openresty.org/download/ngx_openresty-#{version}.tar.gz"
   sha256   '975f7a104a055d689a69655d69d9ee7ef9a4700d8927e5d324c440ea71a66a3b'
