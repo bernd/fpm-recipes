@@ -1,0 +1,5 @@
+#!/bin/sh -e
+
+chmod a+x /etc/init.d/nginx
+
+exit 0
