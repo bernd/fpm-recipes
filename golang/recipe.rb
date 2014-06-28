@@ -2,10 +2,10 @@ class Golang < FPM::Cookery::Recipe
   description 'golang'
 
   name 'go'
-  version '1.1.2'
+  version '1.3'
   homepage 'http://golang.org/'
-  source "http://go.googlecode.com/files/go#{version}.linux-amd64.tar.gz"
-  sha1 '42634e25f98a5db1e8a2a8270c3604fcf8fed38d'
+  source "http://golang.org/dl/go#{version}.linux-amd64.tar.gz"
+  sha1 'b6b154933039987056ac307e20c25fa508a06ba6'
 
   config_files '/etc/profile.d/go.sh'
 
