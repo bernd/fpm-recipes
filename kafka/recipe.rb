@@ -1,13 +1,13 @@
 class Kafka < FPM::Cookery::Recipe
   description 'A high-throughput distributed messaging system'
 
-  v = '0.8.0'
+  v = '0.8.1.1'
   name     'kafka'
   version  "2.8.0-#{v}"
   revision 0
   homepage 'http://kafka.apache.org/'
-  source   "http://ftp.fau.de/apache/kafka/#{v}/kafka_#{version}.tar.gz"
-  md5      '593e0cf966e6b8cd1bbff5bff713c4b3'
+  source   "http://apache.cs.utah.edu/kafka/#{v}/kafka_#{version}.tgz"
+  md5      'fb479c09370298a57bd91b68e0d6696f'
   arch     'all'
   section  'databases'
 
