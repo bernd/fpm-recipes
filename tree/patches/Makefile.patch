@@ -1,0 +1,19 @@
+--- Makefile.orig	2014-12-16 15:06:46.370976739 +0100
++++ Makefile	2014-12-16 15:07:43.138919564 +0100
+@@ -95,12 +95,12 @@
+ 	rm -f *~
+ 
+ install: tree
+-	install -d $(BINDIR)
+-	install -d $(MANDIR)
++	install -d $(DESTDIR)$(BINDIR)
++	install -d $(DESTDIR)$(MANDIR)
+ 	if [ -e $(TREE_DEST) ]; then \
+-		install $(TREE_DEST) $(BINDIR)/$(TREE_DEST); \
++		install $(TREE_DEST) $(DESTDIR)$(BINDIR)/$(TREE_DEST); \
+ 	fi
+-	install doc/$(MAN) $(MANDIR)/$(MAN)
++	install doc/$(MAN) $(DESTDIR)$(MANDIR)/$(MAN)
+ 
+ distclean:
+ 	if [ -f tree.o ]; then rm *.o; fi
