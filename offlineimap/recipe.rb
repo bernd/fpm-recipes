@@ -2,7 +2,7 @@ class OfflineIMAP < FPM::Cookery::Recipe
   description 'IMAP/Maildir synchronization and reader support'
 
   name     'offlineimap'
-  version  '6.5.6'
+  version  '6.5.7-rc2'
   revision 4
   homepage 'http://offlineimap.org/'
   source   'https://github.com/OfflineIMAP/offlineimap', :with => :git, :tag => "v#{version}"
