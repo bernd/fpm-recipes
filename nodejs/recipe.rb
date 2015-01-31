@@ -4,12 +4,12 @@ class NodeJS < FPM::Cookery::Recipe
   description 'Evented I/O for V8 JavaScript'
 
   name     'nodejs'
-  version  '0.10.22'
+  version  '0.10.36'
   revision 0
   homepage 'http://nodejs.org/'
   source   "http://nodejs.org/dist/v#{version}/node-v#{version}.tar.gz"
-  sha256   '157fc58b3f1d109baefac4eb1d32ae747de5e6d55d87d0e9bec8f8dd10679e7e'
-
+  sha256   'b9d7d1d0294bce46686b13a05da6fc5b1e7743b597544aa888e8e64a9f178c81'
+  
   section 'interpreters'
 
   build_depends 'libssl-dev', 'g++', 'python'
@@ -22,8 +22,5 @@ class NodeJS < FPM::Cookery::Recipe
 
   def install
     make :install, 'DESTDIR' => destdir
-
-    # https://github.com/joyent/node/issues/2192
-    prefix('lib/node_modules/npm/man/man1').mkpath
   end
 end
