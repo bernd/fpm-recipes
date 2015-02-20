@@ -62,7 +62,8 @@ class Nginx < FPM::Cookery::Recipe
 
     # man page
     man8.install Dir['objs/nginx.8']
-    system 'gzip', man8/'nginx.8'
+    gzip_path = find_executable 'gzip'
+    safesystem gzip_path, man8/'nginx.8'
 
     # support dirs
     %w( run lock log/nginx lib/nginx ).map do |dir|

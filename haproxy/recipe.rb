@@ -42,7 +42,8 @@ class Haproxy < FPM::Cookery::Recipe
     chmod 0755, etc('rc.d/init.d/haproxy')
 
     #GZip man page
-    safesystem '/bin/gzip', man1('haproxy.1')
+    gzip_path = find_executable 'gzip'
+    safesystem gzip_path, man1('haproxy.1')
 
     haproxy_doc.install Dir['doc/*']
 

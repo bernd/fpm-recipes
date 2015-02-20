@@ -18,7 +18,8 @@ class OfflineIMAP < FPM::Cookery::Recipe
 
     make
     safesystem 'make -C docs man'
-    safesystem 'gzip offlineimap.1'
+    gzip_path = find_executable 'gzip'
+    safesystem gzip_path, 'offlineimap.1'
   end
 
   def install
