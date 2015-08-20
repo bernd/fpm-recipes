@@ -1,12 +1,13 @@
+require 'mkmf' # For find_executable
 require 'fpm/package/python'
 
 class Haproxy < FPM::Cookery::Recipe
   homepage 'http://haproxy.1wt.eu/'
-  source 'http://www.haproxy.org/download/1.5/src/haproxy-1.5.5.tar.gz'
-  md5 '952e4c2057d763a3fb74173a81028be5'
+  source 'http://www.haproxy.org/download/1.5/src/haproxy-1.5.14.tar.gz'
+  md5 'ad9d7262b96ba85a0f8c6acc6cb9edde'
 
   name 'haproxy'
-  version '1.5.5'
+  version '1.5.14'
   revision '1'
 
   description 'The Reliable, High Performance TCP/HTTP Load Balancer'
