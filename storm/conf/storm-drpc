@@ -1,0 +1,6 @@
+# /etc/default/storm-nimbus
+
+#_ START? _#
+ENABLE="no"
+
+STORM_PID="/var/run/storm-drpc.pid"

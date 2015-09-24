@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    configure)
+	user="storm"
+	group="storm"
+	datadir="/opt/storm"
+	bindir="/opt/storm/bin"
+	logdir="/var/log/storm"
+
+	if ! getent group "$group" > /dev/null 2>&1 ; then
+	    addgroup --system "$group" --quiet
+	fi
+
+	if ! id "$user" > /dev/null 2>&1 ; then
+	    adduser --system --home "$datadir" --no-create-home \
+		--ingroup "$group" --disabled-password \
+		--shell /bin/false "$user"
+	fi
+
+	chmod ug+x "$bindir" -R
+	chown "$user" "$datadir" -R
+	chgrp "$user" "$datadir" -R
+	install -d -o "$user" -g "$group" -m 0755 "$logdir"
+    ;;
+esac

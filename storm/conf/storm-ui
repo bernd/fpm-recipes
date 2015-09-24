@@ -1,0 +1,6 @@
+# /etc/default/storm-ui
+
+#_ START? _#
+ENABLE="no"
+
+STORM_PID="/var/run/storm-ui.pid"
