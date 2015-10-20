@@ -3,14 +3,14 @@ class VoltdbPhpClient < FPM::Cookery::Recipe
   homepage    'http://voltdb.com/'
   name        'voltdb-php-client'
   version     '1.2'
-  source      'https://github.com/VoltDB/voltdb-client-php', :with => :git, :branch => "native"
+  source      'https://github.com/VoltDB/voltdb-client-php', :with => :git, :branch => "master"
 
   depends       'php5-common'
   build_depends 'php5-dev', 'gcc', 'make'
 
   def build
       safesystem "rm -rf #{builddir}/voltdb-client-cpp"
-      safesystem "git clone -b noexceptions https://github.com/VoltDB/voltdb-client-cpp.git #{builddir}/voltdb-client-cpp"
+      safesystem "git clone https://github.com/VoltDB/voltdb-client-cpp.git #{builddir}/voltdb-client-cpp"
       Dir.chdir "#{builddir}/voltdb-client-cpp" do
         system 'make'
       end
