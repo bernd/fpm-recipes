@@ -3,17 +3,17 @@ require 'fpm/package/python'
 
 class Haproxy < FPM::Cookery::Recipe
   homepage 'http://haproxy.1wt.eu/'
-  source 'http://www.haproxy.org/download/1.5/src/haproxy-1.5.14.tar.gz'
-  md5 'ad9d7262b96ba85a0f8c6acc6cb9edde'
+  source 'http://www.haproxy.org/download/1.6/src/haproxy-1.6.1.tar.gz'
+  md5 '7343def2af8556ebc8972a9748176094'
 
   name 'haproxy'
-  version '1.5.14'
+  version '1.6.1'
   revision '1'
 
   description 'The Reliable, High Performance TCP/HTTP Load Balancer'
 
   depends 'openssl', 'pcre', 'zlib', 'logrotate', 'chkconfig', 'initscripts', 'shadow-utils', 'setup'
-  build_depends 'openssl-devel', 'pcre-devel', 'zlib-devel'
+  build_depends 'openssl-devel', 'pcre-devel', 'zlib-devel', 'lua-devel'
 
   config_files '/etc/haproxy/haproxy.cfg'
 
@@ -24,7 +24,7 @@ class Haproxy < FPM::Cookery::Recipe
 
   # WARNING: This blindly assumes a new kernel and building on the target box.
   def build
-    make 'TARGET' => 'linux2628', 'CPU' => 'native', 'USE_PCRE' => '1', 'USE_OPENSSL' => '1', 'USE_ZLIB' => '1'
+    make 'TARGET' => 'linux2628', 'CPU' => 'native', 'USE_PCRE' => '1', 'USE_PCRE_JIT' => '1', 'USE_OPENSSL' => '1', 'USE_ZLIB' => '1', 'USE_LIBCRYPT' => '1', 'USE_LUA' => '1'
 
     # halog
     make '-C', 'contrib/halog'
