@@ -2,10 +2,10 @@ class Wrk2 < FPM::Cookery::Recipe
   description 'A constant throughput, correct latency recording variant of wrk'
 
   name     'wrk2'
-  revision 2
-  version  '20141109.1'
+  revision '1'
+  version  '20151104.1'
   homepage 'https://github.com/giltene/wrk2'
-  source   'https://github.com/giltene/wrk2', :with => :git, :ref => 'd7f17a104f'
+  source   'https://github.com/giltene/wrk2', :with => :git, :ref => 'c4250ac'
 
   build_depends 'libssl-dev'
   depends       'libssl1.0.0'
