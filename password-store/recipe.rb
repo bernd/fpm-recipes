@@ -2,8 +2,8 @@ class PasswordStore < FPM::Cookery::Recipe
   description 'the standard unix password manager'
 
   name     'password-store'
-  version  '1.6.3'
-  revision '3'
+  version  '1.6.5'
+  revision '1'
   homepage 'http://www.passwordstore.org/'
   license  'GPLv2+'
   source   'http://git.zx2c4.com/password-store', :with => :git, :tag => version
