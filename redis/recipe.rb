@@ -3,12 +3,11 @@
 class Redis < FPM::Cookery::Recipe
   description 'An advanced key-value store'
 
-  v = '2.6.5'
   name     'redis-server'
-  version  "2:#{v}"
-  revision 0
+  version  '3.0.5'
+  revision '1'
   homepage 'http://redis.io/'
-  source   'https://github.com/antirez/redis', :with => :git, :tag => v
+  source   "http://download.redis.io/releases/redis-#{version}.tar.gz"
 
   section      'database'
   conflicts    'redis-server'
