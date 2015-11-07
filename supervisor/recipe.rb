@@ -2,10 +2,12 @@ class Supervisor < FPM::Cookery::Recipe
   description 'A client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems'
 
   name     'supervisor'
-  version  '3.0b2'
+  version  '3.1.3'
   revision '1'
+
   homepage 'http://www.supervisord.org/'
   source   'http://github.com/Supervisor/supervisor', :with => :git, :tag => "#{version}"
+
   arch     'all'
   section  'admin'
 
