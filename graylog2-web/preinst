@@ -1,4 +1,0 @@
-#!/bin/sh -e
-if [ "$1" = install ]; then
-  useradd -s /bin/bash -d /usr/share/graylog2-web graylog2-web
-fi
