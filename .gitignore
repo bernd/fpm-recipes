@@ -3,4 +3,6 @@ pkg/
 tmp-*/
 .buildpath
 .project
-.vagrant
+.vagrant*
+/.bundle/
+/.vendor/bundle/
