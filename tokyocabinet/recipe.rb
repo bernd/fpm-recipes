@@ -2,11 +2,11 @@ class TokyoCabinet < FPM::Cookery::Recipe
   description 'modern implementation of DBM'
 
   name     'tokyocabinet'
-  version  '1.4.47'
+  version  '1.4.48'
   revision 0
   homepage 'http://fallabs.com/tokyocabinet/'
   source   "http://fallabs.com/tokyocabinet/tokyocabinet-#{version}.tar.gz"
-  sha256   'a456193bac4843c0f0caa877b828c8d99dc44495511df10e1b00acf81c538594'
+  sha256   'a003f47c39a91e22d76bc4fe68b9b3de0f38851b160bbb1ca07a4f6441de1f90'
 
   section       'database'
   build_depends 'zlib1g-dev', 'libbz2-dev'
