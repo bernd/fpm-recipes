@@ -34,7 +34,7 @@ GEM
     json (1.8.3)
     json_pure (1.8.1)
     mime-types (1.25.1)
-    package_cloud (0.2.24)
+    package_cloud (0.2.25)
       colorize (= 0.6.0)
       highline (= 1.6.20)
       json_pure (= 1.8.1)
