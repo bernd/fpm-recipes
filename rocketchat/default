@@ -1,0 +1,7 @@
+# RocketChat requires nodejs 0.10.x
+NODE_BIN="/usr/bin/node"
+
+# Make sure to set these!
+#export ROOT_URL="http://your-host-name.com-as-accessed-from-internet:3000/"
+#export MONGO_URL="mongodb://localhost:27017/rocketchat"
+#export PORT="3000"
