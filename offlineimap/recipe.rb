@@ -7,26 +7,27 @@ class OfflineIMAP < FPM::Cookery::Recipe
   homepage 'http://offlineimap.org/'
   source   'https://github.com/OfflineIMAP/offlineimap', :with => :git, :tag => "v#{version}"
 
-  build_depends 'python-docutils'
+  build_depends 'python-docutils', 'asciidoc'
   depends       'libsqlite0', 'python-sqlite'
 
   def build
-    # Looks like they forgot to bump the version for 6.5.6.
-    inline_replace 'offlineimap/__init__.py' do |s|
-      s.gsub! %(__version__     = "6.5.5"), %(__version__     = "#{version}")
-    end
-
     make
-    safesystem 'make -C docs man'
-    gzip_path = find_executable 'gzip'
-    safesystem gzip_path, 'offlineimap.1'
+    sh 'make -C docs man'
+
+    Dir.chdir('docs') do
+      sh 'gzip offlineimap.1'
+      sh 'gzip offlineimapui.7'
+    end
   end
 
   def install
     with_trueprefix do
-      safesystem "python setup.py install --root #{destdir} --prefix #{prefix} --install-layout deb"
+      sh "python setup.py install --root #{destdir} --prefix #{prefix} --install-layout deb"
     end
 
-    man1.install 'offlineimap.1.gz'
+    Dir.chdir('docs') do
+      man1.install 'offlineimap.1.gz'
+      man7.install 'offlineimapui.7.gz'
+    end
   end
 end
