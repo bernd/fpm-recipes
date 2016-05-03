@@ -3,6 +3,7 @@ class Portecle < FPM::Cookery::Recipe
 
   name 'portecle'
   version '1.10'
+  revision '2'
 
   source "http://downloads.sourceforge.net/project/portecle/portecle/1.10/portecle-1.10.zip"
   sha256 '352b97d114e52d4ef5452e887a058a376e347ab36159c2e594efee4b1b5b2e01'

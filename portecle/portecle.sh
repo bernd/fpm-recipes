@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cd /usr/share/portecle && exec /usr/bin/java -jar portecle.jar "$@"
+exec /usr/bin/java -jar /usr/share/portecle/portecle.jar "$@"
