@@ -1,0 +1,11 @@
+--- portecle.desktop.orig	2016-05-03 20:34:16.503448300 +0200
++++ portecle.desktop	2016-05-03 20:34:22.331425638 +0200
+@@ -2,7 +2,7 @@
+ Name=Portecle
+ Comment=Multipurpose keystore and certificate tool
+ Comment[fi]=Monikäyttöinen avainvarasto- ja varmennetyökalu
+-Exec=portecle
++Exec=portecle %f
+ Icon=portecle
+ Terminal=false
+ Type=Application
