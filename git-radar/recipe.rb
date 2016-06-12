@@ -4,11 +4,11 @@ class Redis < FPM::Cookery::Recipe
   description 'A heads up display for git'
 
   name     'git-radar'
-  version  '0.4'
-  revision 1
+  version  '0.6'
+  revision '1'
   homepage 'https://github.com/michaeldfallen/git-radar'
   source   "https://github.com/michaeldfallen/git-radar/archive/v#{version}.tar.gz"
-  sha256   'ce99215687e35797b971e609938207010cb09de69fdc4385369ded8685f82dab'
+  sha256   '8a2ba434134413e16d83a6dd8d98ba5e1d3ac782a0719abc27fc6feef6ca5a82'
   arch     'all'
 
   def build
