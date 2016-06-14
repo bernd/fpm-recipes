@@ -7,6 +7,8 @@ class Dmenu < FPM::Cookery::Recipe
   source   "http://dl.suckless.org/tools/dmenu-#{version}.tar.gz"
   sha256   '082cd698d82125ca0b3989006fb84ac4675c2a5585bf5bb8af0ea09cfb95a850'
 
+  build_depends 'libxinerama-dev'
+
   conflicts 'dwm-tools'
   replaces  'dwm-tools'
 
