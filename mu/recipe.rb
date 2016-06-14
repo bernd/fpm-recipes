@@ -9,7 +9,7 @@ class MU < FPM::Cookery::Recipe
   sha256   '1e5fba4b15ff6db96320031ddd1b9015e09772ab464d3ec5586188c0293a26a4'
 
   build_depends 'pkg-config', 'libglib2.0-dev', 'libgmime-2.6-dev', 'libxapian-dev'
-  depends 'libgmime-2.6-0', 'libpcre3', 'libuuid1', 'libxapian22'
+  depends 'libgmime-2.6-0', 'libpcre3', 'libuuid1', 'libxapian22v5'
 
   def build
     configure '--disable-mu4e',
