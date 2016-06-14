@@ -2,12 +2,12 @@ class Libsodium < FPM::Cookery::Recipe
   description 'A modern and easy-to-use crypto library.'
 
   name     'libsodium'
-  version  '1.0.6'
+  version  '1.0.9'
   revision '1'
 
-  homepage 'https://github.com/jedisct1/libsodium'
-  source   "https://github.com/jedisct1/libsodium/releases/download/#{version}/libsodium-#{version}.tar.gz"
-  sha256   '940d03ea7d2caa7940e24564bf6d9f66d6edd1df1e0111ff8e3655f3b864fb59'
+  homepage 'https://download.libsodium.org/doc/'
+  source   "https://download.libsodium.org/libsodium/releases/libsodium-#{version}.tar.gz"
+  sha256   '611418db78c36b2e20e50363d30e9c002a98dea9322f305b5bde56a26cdfe756'
 
   license  'BSD'
 
