@@ -17,6 +17,6 @@ class Wrk2 < FPM::Cookery::Recipe
   def install
     bin.install 'wrk', 'wrk2'
     share('wrk2/scripts').install Dir['scripts/*']
-    share('doc/wrk2').install %w(README NOTICE LICENSE)
+    share('doc/wrk2').install %w(README.md NOTICE LICENSE)
   end
 end
