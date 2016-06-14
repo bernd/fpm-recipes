@@ -11,13 +11,7 @@ class JRuby < FPM::Cookery::Recipe
 
   section  'interpreters'
 
-  java = [
-    'openjdk-7-jdk', 'openjdk-7-jre', 'openjdk-7-jre-headless',
-    'openjdk-6-jdk', 'openjdk-6-jre', 'openjdk-6-jre-headless',
-    'java6-runtime', 'oracle-java7-installer'
-  ]
-
-  depends java.join(' | ')
+  depends 'openjdk-8-jre'
 
   def build
     rm Dir['bin/*.{bat,dll,exe}'], :verbose => true

@@ -7,7 +7,7 @@ class Kestrel < FPM::Cookery::Recipe
   version  '2.4.1'
   revision 0
   homepage 'http://robey.github.com/kestrel/'
-  source   "http://robey.github.com/kestrel/download/kestrel-#{version}.zip"
+  source   "http://twitter.github.io/kestrel/download/kestrel-#{version}.zip"
   md5      '623e325823a97dd6e5d58f7a3d114c9f'
   arch     'all'
 

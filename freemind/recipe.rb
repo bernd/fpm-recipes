@@ -9,13 +9,7 @@ class Freemind < FPM::Cookery::Recipe
   sha256   'd710f8adc580cd0e9ca95efc28a80904bd0983b8a5badac344922b8505fbb2b5'
   arch     'all'
 
-  platforms [:debian, :ubuntu] do
-    depends  'openjdk-6-jre | java6-runtime'
-  end
-
-  platforms [:fedora, :redhat, :centos] do
-    depends 'java-1.6.0-openjdk'
-  end
+  depends  'openjdk-8-jre'
 
   def build
     rm Dir['*.{bat,exe}'], :verbose => true
