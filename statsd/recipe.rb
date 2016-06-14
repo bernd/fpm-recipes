@@ -10,8 +10,8 @@ class Statsd < FPM::Cookery::Recipe
 
   arch     'all'
 
-  build_depends 'nodejs'
-  depends       'nodejs (>= 0.10.22)'
+  build_depends 'nodejs', 'npm'
+  depends       'nodejs'
 
   post_install   'post-install'
   post_uninstall 'post-uninstall'
