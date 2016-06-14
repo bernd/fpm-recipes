@@ -10,8 +10,8 @@ class Openresty < FPM::Cookery::Recipe
 
   section 'httpd'
 
-  build_depends 'build-essential', 'git', 'libgeoip-dev', 'libpcre3-dev', 'zlib1g-dev', 'libssl-dev (<< 1.0.0)', 'libgd2-noxpm-dev', 'libperl-dev'
-  depends       'libpcre3', 'zlib1g', 'libssl0.9.8', 'libgeoip1', 'libgd2-noxpm-dev'
+  build_depends 'build-essential', 'git', 'libgeoip-dev', 'libpcre3-dev', 'zlib1g-dev', 'libssl-dev', 'libgd2-noxpm-dev', 'libperl-dev'
+  depends       'libpcre3', 'zlib1g', 'libssl1.0.0', 'libgeoip1', 'libgd2-noxpm-dev'
 
   provides  'nginx-full', 'nginx-common'
   replaces  'nginx-full', 'nginx-common'
@@ -90,8 +90,7 @@ class Openresty < FPM::Cookery::Recipe
     man8.install Dir['objs/nginx.8']
 
     # gzip man page
-    gzip_path = find_executable 'gzip'
-    safesystem gzip_path, 'man8/nginx.8'
+    #safesystem 'gzip', 'man8/nginx.8'
 
     # support dirs
     %w( run lock log/nginx lib/nginx ).map do |dir|

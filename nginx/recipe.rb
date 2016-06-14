@@ -10,8 +10,8 @@ class Nginx < FPM::Cookery::Recipe
 
   section 'httpd'
 
-  build_depends 'libpcre3-dev', 'zlib1g-dev', 'libssl-dev (<< 1.0.0)'
-  depends       'libpcre3', 'zlib1g', 'libssl0.9.8'
+  build_depends 'libpcre3-dev', 'zlib1g-dev', 'libssl-dev'
+  depends       'libpcre3', 'zlib1g', 'libssl1.0.0'
 
   provides  'nginx-full', 'nginx-common'
   replaces  'nginx-full', 'nginx-common'
@@ -62,8 +62,7 @@ class Nginx < FPM::Cookery::Recipe
 
     # man page
     man8.install Dir['objs/nginx.8']
-    gzip_path = find_executable 'gzip'
-    safesystem gzip_path, man8/'nginx.8'
+    safesystem 'gzip', man8/'nginx.8'
 
     # support dirs
     %w( run lock log/nginx lib/nginx ).map do |dir|
