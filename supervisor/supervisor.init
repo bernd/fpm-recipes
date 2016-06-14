@@ -1,8 +1,0 @@
-description     "supervisord"
-
-start on runlevel [2345]
-stop on runlevel [!2345]
-
-respawn
-
-exec /usr/bin/supervisord --nodaemon --configuration /etc/supervisor/supervisord.conf
