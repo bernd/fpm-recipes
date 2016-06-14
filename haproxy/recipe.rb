@@ -12,8 +12,15 @@ class Haproxy < FPM::Cookery::Recipe
 
   description 'The Reliable, High Performance TCP/HTTP Load Balancer'
 
-  depends 'openssl', 'pcre', 'zlib', 'logrotate', 'chkconfig', 'initscripts', 'shadow-utils', 'setup'
-  build_depends 'openssl-devel', 'pcre-devel', 'zlib-devel', 'lua-devel'
+  platforms [:debian, :ubuntu] do
+    depends 'lua5.3', 'libssl1.0.0', 'zlib1g', 'libpcre3'
+    build_depends 'liblua5.3-dev', 'libssl-dev', 'zlib1g-dev', 'libpcre3-dev'
+  end
+
+  platforms [:centos, :redhat] do
+    depends 'openssl', 'pcre', 'zlib', 'logrotate', 'chkconfig', 'initscripts', 'shadow-utils', 'setup'
+    build_depends 'openssl-devel', 'pcre-devel', 'zlib-devel', 'lua-devel'
+  end
 
   config_files '/etc/haproxy/haproxy.cfg'
 
@@ -24,7 +31,22 @@ class Haproxy < FPM::Cookery::Recipe
 
   # WARNING: This blindly assumes a new kernel and building on the target box.
   def build
-    make 'TARGET' => 'linux2628', 'CPU' => 'native', 'USE_PCRE' => '1', 'USE_PCRE_JIT' => '1', 'USE_OPENSSL' => '1', 'USE_ZLIB' => '1', 'USE_LIBCRYPT' => '1', 'USE_LUA' => '1'
+    build_flags = {
+      'TARGET' => 'linux2628',
+      'CPU' => 'native',
+      'USE_PCRE' => '1',
+      'USE_PCRE_JIT' => '1',
+      'USE_OPENSSL' => '1',
+      'USE_ZLIB' => '1',
+      'USE_LIBCRYPT' => '1',
+      'USE_LUA' => '1'
+    }
+
+    if %w(ubuntu debian).include?(FPM::Cookery::Facts.platform.to_s)
+      build_flags['LUA_INC'] = '/usr/include/lua5.3'
+    end
+
+    make build_flags
 
     # halog
     make '-C', 'contrib/halog'
