@@ -1,9 +1,0 @@
-{
-  "AdminHttpPort":  8083,
-  "AdminAssetsDir": "/usr/share/influxdb/admin/",
-  "ApiHttpPort":    8086,
-  "RaftServerPort": 8090,
-  "SeedServers":    [],
-  "DataDir":        "/var/lib/influxdb/db",
-  "RaftDir":        "/var/lib/influxdb/raft"
-}
