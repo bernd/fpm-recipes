@@ -9,7 +9,7 @@ class PasswordStore < FPM::Cookery::Recipe
   source   'http://git.zx2c4.com/password-store', :with => :git, :tag => version
   arch     'all'
 
-  depends 'tree (>= 1.7.0)'
+  depends 'tree'
 
   def build
     make
