@@ -1,5 +1,5 @@
 class Mutt < FPM::Cookery::Recipe
-  description ''
+  description 'ext-based mailreader supporting MIME, GPG, PGP and threading'
 
   name 'mutt'
   version '1.6.1'
