@@ -1,0 +1,18 @@
+--- a/contrib/Makefile.in.orig	2016-06-23 13:54:14.828383393 +0200
++++ b/contrib/Makefile.in	2016-06-23 13:54:48.256543924 +0200
+@@ -472,12 +472,12 @@
+ 
+ 
+ install-data-local:
+-	$(MKDIR_P) $(DESTDIR)$(docdir)/samples $(DESTDIR)$(docdir)/samples/iconv
++	$(MKDIR_P) $(DESTDIR)$(docdir)/examples $(DESTDIR)$(docdir)/examples/iconv
+ 	for f in $(SAMPLES) ; do \
+-		$(INSTALL) -m 644 $(srcdir)/$$f $(DESTDIR)$(docdir)/samples ;	\
++		$(INSTALL) -m 644 $(srcdir)/$$f $(DESTDIR)$(docdir)/examples ;	\
+ 	done
+ 	for f in $(srcdir)/iconv/*.rc ; do					\
+-		$(INSTALL) -m 644 $$f $(DESTDIR)$(docdir)/samples/iconv	  ;	\
++		$(INSTALL) -m 644 $$f $(DESTDIR)$(docdir)/examples/iconv	  ;	\
+ 	done
+ 
+ uninstall-local:

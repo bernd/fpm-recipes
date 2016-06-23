@@ -3,7 +3,7 @@ class Mutt < FPM::Cookery::Recipe
 
   name 'mutt'
   version '1.6.1'
-  revision '1'
+  revision '2'
 
   source "ftp://ftp.mutt.org/pub/mutt/mutt-#{version}.tar.gz"
   sha256 '98b26cecc6b1713082fc880344fa345c20bd7ded6459abe18c84429c7cf8ed20'
@@ -15,8 +15,12 @@ class Mutt < FPM::Cookery::Recipe
   depends 'libncursesw5', 'libgpgme11', 'ispell', 'bison', 'libidn11', 'libtokyocabinet9'
 
   def build
+    Dir.glob("#{workdir('patches')}/*").each do |file|
+      patch file, 1
+    end
+
     configure '--prefix=/usr', '--sysconfdir=/etc', '--mandir=/usr/share/man',
-              '--with-docdir=/usr/share/doc', '--with-mailpath=/var/mail',
+              '--with-docdir=/usr/share/doc/mutt', '--with-mailpath=/var/mail',
               '--disable-dependency-tracking', '--enable-compressed',
               '--enable-fcntl', '--enable-pop', '--with-curses', '--with-gnutls',
               '--with-gss', '--with-idn', '--with-mixmaster', '--with-sasl',
@@ -42,5 +46,9 @@ class Mutt < FPM::Cookery::Recipe
     rm_rf bin('muttbug')
     rm_rf bin('smime_keys')
     rm_rf bin('mutt_dotlock')
+
+    rm_rf etc('mime.types')
+    rm_rf etc('mime.types.dist')
+    rm_rf etc('Muttrc.dist')
   end
 end

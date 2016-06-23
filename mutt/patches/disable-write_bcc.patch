@@ -1,0 +1,13 @@
+Make sure write_bcc is disabled by default to avoid potential privacy leak.
+
+--- a/init.h.orig	2016-06-23 14:06:33.510937059 +0200
++++ b/init.h	2016-06-23 14:06:48.311148608 +0200
+@@ -3562,7 +3562,7 @@
+   ** .pp
+   ** (DEPRECATED) Equivalent to setting $$wrap with a negative value.
+   */
+-  { "write_bcc",	DT_BOOL, R_NONE, OPTWRITEBCC, 1},
++  { "write_bcc",	DT_BOOL, R_NONE, OPTWRITEBCC, 0},
+   /*
+   ** .pp
+   ** Controls whether mutt writes out the ``Bcc:'' header when preparing
