@@ -3,6 +3,7 @@ class Mutt < FPM::Cookery::Recipe
 
   name 'mutt'
   version '1.6.1'
+  revision '1'
 
   source "ftp://ftp.mutt.org/pub/mutt/mutt-#{version}.tar.gz"
   sha256 '98b26cecc6b1713082fc880344fa345c20bd7ded6459abe18c84429c7cf8ed20'
