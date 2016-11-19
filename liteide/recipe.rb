@@ -3,7 +3,7 @@ class LiteIDE < FPM::Cookery::Recipe
 
   name     'liteide'
   version  '30.2'
-  revision '1'
+  revision '3'
 
   source   "https://freefr.dl.sourceforge.net/project/liteide/X#{version}/liteidex#{version}.linux64-qt4.tar.bz2"
   homepage 'https://github.com/visualfc/liteide'
@@ -21,6 +21,7 @@ class LiteIDE < FPM::Cookery::Recipe
 
   def install
     share('liteide').install Dir['*']
+    share('applications').install workdir('liteide.desktop')
     bin.install 'liteide.sh', 'liteide'
   end
 end

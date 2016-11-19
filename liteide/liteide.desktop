@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=LiteIDE
+Comment=IDE for editing and building projects written in the Go programming language
+Exec=/usr/share/liteide/bin/liteide
+Icon=/usr/share/liteide/share/liteide/welcome/images/liteide-logo128.png
+Terminal=false
+StartupNotify=false
+Categories=Application;Development;
