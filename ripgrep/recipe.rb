@@ -2,12 +2,12 @@ class Ripgrep < FPM::Cookery::Recipe
   description 'combines the usability of The Silver Searcher with the raw speed of grep'
 
   name     'ripgrep'
-  version  '0.1.16'
+  version  '0.3.2'
   revision '1'
 
   homepage 'https://github.com/BurntSushi/ripgrep/releases'
   source   "https://github.com/BurntSushi/ripgrep/releases/download/#{version}/ripgrep-#{version}-x86_64-unknown-linux-musl.tar.gz"
-  sha256   'ce9181ed2fd7676ff3c3afbb97431a092178477e7802410145aa5331ca0cca5b'
+  sha256   '0f81f318e0fae816565d3490b99d27b780fb54ff3836d4fbbaa524a7321a00ca'
 
   def build
   end
