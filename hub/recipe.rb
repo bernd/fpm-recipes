@@ -2,12 +2,12 @@ class Hub < FPM::Cookery::Recipe
   description 'hub helps you win at git'
 
   name     'hub'
-  version  '2.2.3'
+  version  '2.2.9'
   revision '1'
   arch     FPM::Cookery::Facts.arch
   homepage 'http://hub.github.com/'
   source   "https://github.com/github/hub/releases/download/v#{version}/hub-linux-#{arch}-#{version}.tgz"
-  sha256   '54c35a459a4241b7ae4c28bcfea0ceef849dd2f8a9dd2b82ba2ba964a743e6bc'
+  sha256   '5867647071007add582f911867fb4973354c51690ac20aecb2e73be7440875a3'
 
   def build
   end
