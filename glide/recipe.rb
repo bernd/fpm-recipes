@@ -4,11 +4,11 @@ class Glide < FPM::Cookery::Recipe
   homepage 'https://glide.sh/'
 
   name     'glide'
-  version  '0.12.1'
+  version  '0.12.3'
   revision '1'
 
   source "https://github.com/Masterminds/glide/releases/download/v#{version}/glide-v#{version}-linux-amd64.tar.gz"
-  sha256 'dea13aa328f0b6948062935dccb935add1a27394f2af30b007412c9535dbe8fd'
+  sha256 '0e2be5e863464610ebc420443ccfab15cdfdf1c4ab63b5eb25d1216900a75109'
 
   def build
   end
