@@ -2,12 +2,12 @@ class Jid < FPM::Cookery::Recipe
   description 'JSON incremental digger'
 
   name     'jid'
-  version  '0.6.3'
+  version  '0.7.2'
   revision '1'
 
   homepage 'https://github.com/simeji/jid'
   source   "https://github.com/simeji/jid/releases/download/#{version}/jid_linux_amd64.zip"
-  sha256   '3519711e65c896edfdfbb65a0117af4badc24cb7d02a2584d9d1470e81ab4136'
+  sha256   '57d9e6cb6dcd052d7ffcfddd7bc88fd5a07351a9bdf0575d3355a9921153e177'
 
   def build
   end
