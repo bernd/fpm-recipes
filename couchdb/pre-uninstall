@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+
+stopping="false"
+
+case "$1" in
+	remove)
+		stopping="true"
+		;;
+	upgrade)
+		stopping="false"
+		;;
+	deconfigure|failed-upgrade)
+		;;
+esac
+
+if [ "$stopping" = "false" ]; then
+	# Nothing to stop, exit early.
+	exit 0
+fi
+
+systemctl --no-reload stop couchdb.service >/dev/null 2>&1 || true
+systemctl disable couchdb.service >/dev/null 2>&1 || true
+
+exit 0

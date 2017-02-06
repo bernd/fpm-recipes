@@ -1,0 +1,32 @@
+#!/bin/sh
+
+set -e
+
+user="couchdb"
+group="couchdb"
+datadir="/var/lib/couchdb"
+logdir="/var/log/couchdb"
+
+case "$1" in
+	install|upgrade)
+		if ! getent group "$group" > /dev/null 2>&1 ; then
+			addgroup --system "$group" --quiet
+		fi
+
+		if ! id "$user" > /dev/null 2>&1 ; then
+			adduser --system --home "$datadir" --no-create-home \
+				--ingroup "$group" --disabled-password \
+				--gecos "CouchDB Server" \
+				--shell /bin/false --quiet "$user"
+		fi
+		;;
+	abort-deconfigure|abort-upgrade|abort-remove)
+		# Ignore
+		;;
+esac
+
+# Create directories
+install -d -o "$user" -g "$group" -m 0755 "$datadir"
+install -d -o "$user" -g "$group" -m 0755 "$logdir"
+
+exit 0

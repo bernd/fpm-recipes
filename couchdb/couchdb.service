@@ -1,0 +1,13 @@
+[Unit]
+Description=CouchDB Service
+Documentation=http://docs.couchdb.org/
+After=network.target
+
+[Service]
+User=couchdb
+Group=couchdb
+ExecStart=/usr/share/couchdb/bin/couchdb
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

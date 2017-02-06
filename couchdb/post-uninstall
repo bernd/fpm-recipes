@@ -1,0 +1,38 @@
+#!/bin/sh
+
+set -e
+
+user="couchdb"
+group="couchdb"
+datadir="/var/lib/couchdb"
+logdir="/var/log/couchdb"
+
+remove_data="false"
+
+case "$1" in
+	remove)
+		remove_data="false"
+		;;
+
+	purge)
+		remove_data="true"
+		;;
+
+	upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+		# Nothing to do here
+		;;
+esac
+
+if [ "$remove_data" = "true" ]; then
+	rm -rf "$datadir" "$logdir"
+
+	if id "$user" > /dev/null 2>&1 ; then
+		userdel "$user" || true
+	fi
+
+	if getent group "$group" > /dev/null 2>&1 ; then
+		groupdel "$group" || true
+	fi
+fi
+
+exit 0

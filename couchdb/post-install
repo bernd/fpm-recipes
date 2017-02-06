@@ -1,0 +1,39 @@
+#!/bin/sh
+
+set -e
+
+# Flag to indicate if this is an upgrade
+upgrade="false"
+
+case "$1" in
+	configure)
+		if [ -z "$2" ]; then
+			upgrade="false"
+		else
+			upgrade="true"
+		fi
+		;;
+	abort-deconfigure|abort-upgrade|abort-remove)
+		;;
+esac
+
+# Reload systemd configuration to make sure the new unit file gets activated
+systemctl daemon-reload
+
+if [ "$upgrade" = "true" ]; then
+	# This is an upgrade, exit early.
+	exit 0
+fi
+
+echo "################################################################################"
+echo "CouchDB does NOT start automatically!"
+echo ""
+echo "Please run the following commands if you want to start CouchDB automatically on system boot:"
+echo ""
+echo "    sudo systemctl enable couchdb.service"
+echo ""
+echo "    sudo systemctl start couchdb.service"
+echo ""
+echo "################################################################################"
+
+exit 0
