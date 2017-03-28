@@ -7,7 +7,7 @@ Feel free to fork them!
 ## Usage
 
     $ cd tmux
-    $ fpm-cook
+    $ fpm-cook package
       [watching the output]
     $ sudo dpkg -i pkg/*.deb
     $ fpm-cook clean
