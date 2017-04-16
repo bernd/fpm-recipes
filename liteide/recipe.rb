@@ -2,12 +2,12 @@ class LiteIDE < FPM::Cookery::Recipe
   description 'A simple, open source, cross-platform Go IDE'
 
   name     'liteide'
-  version  '30.3'
+  version  '31'
   revision '1'
 
-  source   "https://freefr.dl.sourceforge.net/project/liteide/X#{version}/liteidex#{version}.linux64-qt4.tar.bz2"
+  source   "https://github.com/visualfc/liteide/releases/download/x#{version}/liteidex#{version}.linux64-qt4.tar.bz2"
   homepage 'https://github.com/visualfc/liteide'
-  sha256   '7d31d32cf2fd70344d6b6cc69555879de0dde4decc1d420a7fd3904f8da7f41c'
+  sha256   'c4dcb049e0de2ac402c1e244f27e4698d9c6821d63d074fb1ec9696592e041ba'
 
   def build
     File.open('liteide.sh', 'w', 0755) do |file|
