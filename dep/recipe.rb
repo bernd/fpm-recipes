@@ -4,11 +4,11 @@ class Dep < FPM::Cookery::Recipe
   homepage 'https://github.com/golang/dep'
 
   name     'dep'
-  version  '0.3.2'
+  version  '0.4.1'
   revision '1'
 
   source "https://github.com/golang/dep/releases/download/v#{version}/dep-linux-amd64"
-  sha256 '322152b8b50b26e5e3a7f6ebaeb75d9c11a747e64bbfd0d8bb1f4d89a031c2b5'
+  sha256 '31144e465e52ffbc0035248a10ddea61a09bf28b00784fd3fdd9882c8cbb2315'
 
   def build
   end
