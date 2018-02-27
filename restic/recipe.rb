@@ -4,11 +4,11 @@ class Restic < FPM::Cookery::Recipe
   homepage 'https://restic.github.io/'
 
   name     'restic'
-  version  '0.8.2'
+  version  '0.8.3'
   revision '1'
 
   source "https://github.com/restic/restic/releases/download/v#{version}/restic_#{version}_linux_amd64.bz2"
-  sha256 'b626b5bb92017ef63e3450aeeeb50583be95fadc09e9d2f44c5f37caa8a61e59'
+  sha256 '1e9aca80c4f4e263c72a83d4333a9dac0e24b24e1fe11a8dc1d9b38d77883705'
 
   def extract
     extracted_source = "#{builddir}/restic-#{version}"
