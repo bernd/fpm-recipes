@@ -2,11 +2,11 @@ class MU < FPM::Cookery::Recipe
   description 'a collection of utilities for indexing and searching Maildirs'
 
   name    'mu'
-  version '0.9.13'
+  version '1.0'
 
   homepage 'https://github.com/djcb/mu'
-  source   "https://github.com/djcb/mu-releases/raw/master/mu-#{version}.tar.gz"
-  sha256   '1e5fba4b15ff6db96320031ddd1b9015e09772ab464d3ec5586188c0293a26a4'
+  source   "https://github.com/djcb/mu/releases/download/v#{version}/mu-#{version}.tar.xz"
+  sha256   '966adc4db108f8ddf162891f9c3c24ba27f78c31f86575a0e05fbf14e857a513'
 
   build_depends 'pkg-config', 'libglib2.0-dev', 'libgmime-2.6-dev', 'libxapian-dev'
   depends 'libgmime-2.6-0', 'libpcre3', 'libuuid1', 'libxapian22v5'
