@@ -7,7 +7,7 @@ class OfflineIMAP < FPM::Cookery::Recipe
   homepage 'http://offlineimap.org/'
   source   'https://github.com/OfflineIMAP/offlineimap', :with => :git, :tag => "v#{version}"
 
-  build_depends 'python-docutils', 'asciidoc'
+  build_depends 'python-docutils', 'python-six', 'asciidoc'
 
   def build
     make
