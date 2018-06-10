@@ -1,5 +1,5 @@
 class Ruby193 < FPM::Cookery::Recipe
-  description 'The Ruby virtual machine v1.9.3 with p551''
+  description 'The Ruby virtual machine v1.9.3 with p551'
 
   name 'ruby'
   version '1:1.9.3.551'
@@ -13,7 +13,7 @@ class Ruby193 < FPM::Cookery::Recipe
   build_depends 'libffi-dev', 'libgdbm-dev', 'libncurses5-dev',
                 'libreadline6-dev', 'libssl-dev', 'libyaml-dev'
 
-  depends 'libffi5', 'libncurses5', 'libreadline6', 'libssl1.0.0',
+  depends 'libffi6', 'libncurses5', 'libreadline6', 'libssl1.0.0',
           'libyaml-0-2', 'libgdbm3'
 
   def build

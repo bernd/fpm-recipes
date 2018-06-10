@@ -10,10 +10,10 @@ class Ruby192 < FPM::Cookery::Recipe
 
   section 'interpreters'
 
-  build_depends 'autoconf', 'libreadline5-dev', 'bison', 'zlib1g-dev',
+  build_depends 'autoconf', 'libreadline6-dev', 'bison', 'zlib1g-dev',
                 'libssl-dev', 'libyaml-dev'
 
-  depends 'libreadline5', 'zlib1g', 'openssl', 'libyaml-0-2'
+  depends 'libreadline6', 'zlib1g', 'openssl', 'libyaml-0-2'
 
   def build
     configure :prefix => prefix, 'disable-install-doc' => true
