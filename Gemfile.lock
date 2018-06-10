@@ -1,3 +1,17 @@
+GIT
+  remote: https://github.com/bernd/fpm-cookery.git
+  revision: 051cc162f874bfc026b6bc051606d5b8813c1f06
+  specs:
+    fpm-cookery (0.33.0)
+      addressable (~> 2.3.8)
+      facter
+      fpm (~> 1.1)
+      json (>= 1.7.7, < 2.0)
+      json_pure (>= 1.7.7, < 2.0)
+      puppet (~> 3.4)
+      safe_yaml (~> 1.0.4)
+      systemu
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -25,15 +39,6 @@ GEM
       pleaserun (~> 0.0.29)
       ruby-xz (~> 0.2.3)
       stud
-    fpm-cookery (0.33.0)
-      addressable (~> 2.3.8)
-      facter
-      fpm (~> 1.1)
-      json (>= 1.7.7, < 2.0)
-      json_pure (>= 1.7.7, < 2.0)
-      puppet (~> 3.4)
-      safe_yaml (~> 1.0.4)
-      systemu
     hiera (1.3.4)
       json_pure
     highline (1.6.20)
@@ -87,7 +92,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fpm-cookery
+  fpm-cookery!
   package_cloud
 
 BUNDLED WITH
