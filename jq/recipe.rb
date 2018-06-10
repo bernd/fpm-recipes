@@ -11,7 +11,7 @@ class Jq < FPM::Cookery::Recipe
 
   def build
     sh 'autoreconf -i'
-    configure
+    configure '--disable-docs'
     make
   end
 
