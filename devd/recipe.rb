@@ -2,10 +2,10 @@ class Devd < FPM::Cookery::Recipe
   description 'A local webserver for developers'
 
   name 'devd'
-  version '0.7'
+  version '0.8'
 
   source "https://github.com/cortesi/devd/releases/download/v#{version}/devd-#{version}-linux64.tgz"
-  sha256 '3bf919c081f46d4a0e1e5c8f35d943b949db39811f4b99177d90465ebb17fd4c'
+  sha256 '0b56d344a8d3a58726a395e8ccca3d9ef92c63bb82eea11266329190b81d78aa'
 
   def build
   end
