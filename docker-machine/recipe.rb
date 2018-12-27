@@ -4,11 +4,11 @@ class DockerMachine < FPM::Cookery::Recipe
   homepage 'https://docs.docker.com/machine/'
 
   name 'docker-machine'
-  version '0.15.0'
+  version '0.16.0'
   revision '1'
 
   source "https://github.com/docker/machine/releases/download/v#{version}/docker-machine-Linux-x86_64"
-  sha256 '44c5c62db13b6eb6a9d3e276c1181401c78327ff6303570936ba2cf5d137b7b5'
+  sha256 '3d2cae5f66df636116153c8a96310c0cdef0060b1ecfe86116cec825bbf393d8'
 
   def build
   end
