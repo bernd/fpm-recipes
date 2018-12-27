@@ -2,11 +2,11 @@ class Noti < FPM::Cookery::Recipe
   description 'Trigger notifications when a process completes'
 
   name     'noti'
-  version  '2.5.0'
+  version  '3.1.0'
   revision '1'
 
-  source "https://github.com/variadico/noti/releases/download/v#{version}/noti#{version}.linux-amd64.tar.gz"
-  sha256 'ba8941a0d0838425b82ffc89698d92e94b13ddbe13f1270da57eb76ae4b262ee'
+  source "https://github.com/variadico/noti/releases/download/#{version}/noti#{version}.linux-amd64.tar.gz"
+  sha256 '959410e065ed36554c8c2e2b94c803de5dc8c149b2e88c220b814cb31b23f684'
 
   def build
   end
