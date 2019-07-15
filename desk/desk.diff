@@ -1,0 +1,13 @@
+Sort output of "desk ls" alphabetically.
+
+--- desk.orig	2019-07-15 09:35:41.912984260 +0200
++++ desk	2019-07-15 09:35:56.752933831 +0200
+@@ -175,7 +175,7 @@
+             len=${#name}
+             (( len > longest )) && longest=$len
+         fi
+-    done < <(find "${DESKS}/" -name "*${DESKEXT}" -print0)
++    done < <(find "${DESKS}/" -name "*${DESKEXT}" -print0 | sort -zV)
+     if [[ "$AUTO_ALIGN" != false ]]; then
+         print_aligned "$out" "$longest"
+     else
