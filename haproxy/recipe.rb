@@ -2,21 +2,20 @@ require 'mkmf' # For find_executable
 require 'fpm/package/python'
 
 class Haproxy < FPM::Cookery::Recipe
-  homepage 'http://haproxy.1wt.eu/'
-  source 'http://www.haproxy.org/download/1.6/src/haproxy-1.6.5.tar.gz'
-  md5 '5290f278c04e682e42ab71fed26fc082'
-
+  # Info
+  homepage 'http://www.haproxy.org/'
+  source 'http://www.haproxy.org/download/1.8/src/haproxy-1.8.20.tar.gz'
+  md5 'abf9b7b1aa84e0839501e006fc20d7fd'
   name 'haproxy'
-  version '1.6.5'
+  description 'The Reliable, High Performance TCP/HTTP Load Balancer'
+  version '1.8.20'
   revision '1'
 
-  description 'The Reliable, High Performance TCP/HTTP Load Balancer'
-
+  # Platforms specific dependencies
   platforms [:debian, :ubuntu] do
     depends 'lua5.3', 'libssl1.0.0', 'zlib1g', 'libpcre3'
     build_depends 'liblua5.3-dev', 'libssl-dev', 'zlib1g-dev', 'libpcre3-dev'
   end
-
   platforms [:centos, :redhat] do
     depends 'openssl', 'pcre', 'zlib', 'logrotate', 'chkconfig', 'initscripts', 'shadow-utils', 'setup'
     build_depends 'openssl-devel', 'pcre-devel', 'zlib-devel', 'lua-devel'
@@ -29,17 +28,9 @@ class Haproxy < FPM::Cookery::Recipe
   pre_uninstall 'pre-uninstall'
   post_uninstall 'post-uninstall'
 
-  # WARNING: This blindly assumes a new kernel and building on the target box.
   def build
     build_flags = {
       'TARGET' => 'linux2628',
-      'CPU' => 'native',
-      'USE_PCRE' => '1',
-      'USE_PCRE_JIT' => '1',
-      'USE_OPENSSL' => '1',
-      'USE_ZLIB' => '1',
-      'USE_LIBCRYPT' => '1',
-      'USE_LUA' => '1'
     }
 
     if %w(ubuntu debian).include?(FPM::Cookery::Facts.platform.to_s)
