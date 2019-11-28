@@ -4,11 +4,11 @@ class Op < FPM::Cookery::Recipe
   homepage 'https://app-updates.agilebits.com/product_history/CLI'
 
   name     'op'
-  version  '0.5.1'
+  version  '0.8.0'
   revision '1'
 
   source "https://cache.agilebits.com/dist/1P/op/pkg/v#{version}/op_linux_amd64_v#{version}.zip"
-  sha256 'fb7312e9323ee286a8265b62b9ca7f663368b7f41e7d2f49e96927d9620ed7a3'
+  sha256 '29b70379db8c4787e491ab127422acb183267916b989eee81631e08b10742c0a'
 
   def build
   end
