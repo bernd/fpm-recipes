@@ -2,15 +2,17 @@ class OfflineIMAP < FPM::Cookery::Recipe
   description 'IMAP/Maildir synchronization and reader support'
 
   name     'offlineimap'
-  version  '7.2.4'
+  version  '7.3.2'
   revision '1'
   homepage 'http://offlineimap.org/'
-  source   'https://github.com/OfflineIMAP/offlineimap', :with => :git, :tag => "v#{version}"
+  source   "http://www.offlineimap.org/uploads/offlineimap-v#{version}.tar.gz"
+  sha256   '6720a1da5d38fb6e0f2b3c27bce74fce0bf714b5c70d2f0f0bac654f4ba29423'
 
-  build_depends 'python-docutils', 'python-six', 'asciidoc', 'git'
+  build_depends 'python-pip', 'python-docutils', 'asciidoc'
 
   def build
-    make
+    # Installing gssapi fail so we just ignore it (not needed)
+    sh 'grep -v -e "^#" requirements.txt -e gssapi | xargs -rt  pip2 install'
     sh 'make -C docs man'
 
     Dir.chdir('docs') do
@@ -21,7 +23,10 @@ class OfflineIMAP < FPM::Cookery::Recipe
 
   def install
     with_trueprefix do
-      sh "python setup.py install --root #{destdir} --prefix #{prefix} --install-layout deb"
+      # Bundle rfc6555 runtime dependency in the package because there is no
+      # package in older Debian/Ubuntu
+      sh "pip2 install --ignore-installed --root #{destdir} --prefix #{prefix} --install-option='--install-layout=deb' rfc6555"
+      sh "python2 setup.py install --root #{destdir} --prefix #{prefix} --install-layout deb"
     end
 
     Dir.chdir('docs') do
