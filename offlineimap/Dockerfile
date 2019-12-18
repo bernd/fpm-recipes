@@ -1,4 +1,4 @@
-FROM fpm-cookery:0.35.0-ubuntu-16.04
+FROM fpmcookery/ubuntu-16.04:0.35.1
 
 RUN \
     apt-get update \
