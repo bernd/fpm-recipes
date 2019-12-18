@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'fpm-cookery', git: 'https://github.com/bernd/fpm-cookery.git'
+#gem 'fpm-cookery', path: '../fpm-cookery'
+gem 'fpm-cookery'
 gem 'package_cloud'
