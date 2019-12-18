@@ -23,12 +23,12 @@ GEM
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     clamp (1.0.1)
-    domain_name (0.5.20180417)
+    domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.7.2)
-    facter (2.5.1)
+    dotenv (2.7.5)
+    facter (2.5.6)
     fast_gettext (1.1.2)
-    ffi (1.11.1)
+    ffi (1.11.3)
     fpm (1.11.0)
       arr-pm (~> 0.0.10)
       backports (>= 2.6.2)
@@ -40,8 +40,9 @@ GEM
       pleaserun (~> 0.0.29)
       ruby-xz (~> 0.2.3)
       stud
-    hiera (3.5.0)
+    hiera (3.6.0)
     highline (1.6.20)
+    http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     insist (1.0.0)
@@ -49,10 +50,10 @@ GEM
     json (1.8.6)
     json_pure (1.8.1)
     locale (2.1.2)
-    mime-types (3.2.2)
+    mime-types (3.3)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2019.0331)
-    multi_json (1.13.1)
+    mime-types-data (3.2019.1009)
+    multi_json (1.14.1)
     mustache (0.99.8)
     netrc (0.11.0)
     package_cloud (0.3.05)
@@ -68,7 +69,7 @@ GEM
       insist
       mustache (= 0.99.8)
       stud
-    puppet (5.5.14)
+    puppet (5.5.17)
       facter (> 2.0.1, < 4)
       fast_gettext (~> 1.1.2)
       hiera (>= 3.2.1, < 4)
@@ -76,8 +77,9 @@ GEM
       multi_json (~> 1.10)
     rainbow (2.2.2)
       rake
-    rake (12.3.2)
-    rest-client (2.0.2)
+    rake (13.0.1)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -100,4 +102,4 @@ DEPENDENCIES
   package_cloud
 
 BUNDLED WITH
-   2.0.1
+   2.1.1
