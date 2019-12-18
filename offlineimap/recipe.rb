@@ -8,7 +8,9 @@ class OfflineIMAP < FPM::Cookery::Recipe
   source   "http://www.offlineimap.org/uploads/offlineimap-v#{version}.tar.gz"
   sha256   '6720a1da5d38fb6e0f2b3c27bce74fce0bf714b5c70d2f0f0bac654f4ba29423'
 
-  build_depends 'python-pip', 'python-docutils', 'asciidoc'
+  docker true
+
+  build_depends 'python-pip', 'python-docutils', 'python-setuptools', 'asciidoc', 'xmlto'
 
   def build
     # Installing gssapi fail so we just ignore it (not needed)
