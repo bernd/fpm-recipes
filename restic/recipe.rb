@@ -5,7 +5,7 @@ class Restic < FPM::Cookery::Recipe
 
   name     'restic'
   version  '0.9.6'
-  revision '1'
+  revision '3' # 20.04 is using revision 2
 
   source "https://github.com/restic/restic/releases/download/v#{version}/restic_#{version}_linux_amd64.bz2"
   sha256 'a88ca09d1dd051d470965667a224a2b81930c6628a0566b7b17868be40207dc8'
