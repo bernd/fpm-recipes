@@ -4,11 +4,11 @@ class DockerCompose < FPM::Cookery::Recipe
   homepage 'https://docs.docker.com/compose/'
 
   name 'docker-compose'
-  version '1.25.4'
+  version '1.25.5'
   revision '1'
 
   source "https://github.com/docker/compose/releases/download/#{version}/docker-compose-Linux-x86_64"
-  sha256 '542e93b1d5106d2769b325f60ba9a0ba087bb96e30dc2c1cb026f0cb642e9aed'
+  sha256 '1cb7ecccc17c8d5f1888f9e2b3211b07e35c86d0010a6c0f711fe65ef5b69528'
 
   def build
   end
