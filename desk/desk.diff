@@ -1,8 +1,24 @@
-Sort output of "desk ls" alphabetically.
-
---- desk.orig	2019-07-15 09:35:41.912984260 +0200
-+++ desk	2019-07-15 09:35:56.752933831 +0200
-@@ -175,7 +175,7 @@
+--- desk.orig	2020-05-03 12:50:51.650500668 +0200
++++ desk	2020-05-03 13:01:46.253969063 +0200
+@@ -4,6 +4,7 @@
+ PREFIX="${DESK_DIR:-$HOME/.desk}"
+ DESKS="${DESK_DESKS_DIR:-$PREFIX/desks}"
+ DESKFILE_NAME=Deskfile
++DESK_SHELL_ARGS="${DESK_SHELL_ARGS:-}"
+ 
+ 
+ ## Commands
+@@ -130,6 +131,9 @@
+         exit 1
+     else
+         local SHELL_EXEC="$(get_running_shell)"
++        if [ -n "$DESK_SHELL_ARGS" ]; then
++            set -- "$DESK_SHELL_ARGS" "$@"
++        fi
+         DESK_NAME="${TODESK}" DESK_ENV="${DESKPATH}" exec "${SHELL_EXEC}" "$@"
+     fi
+ }
+@@ -175,7 +179,7 @@
              len=${#name}
              (( len > longest )) && longest=$len
          fi

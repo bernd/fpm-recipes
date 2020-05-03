@@ -3,7 +3,7 @@ class Desk < FPM::Cookery::Recipe
 
   name 'desk'
   version '0.6.0'
-  revision '1'
+  revision '2'
   arch 'all'
 
   source "https://github.com/jamesob/desk/archive/v#{version}.tar.gz"
